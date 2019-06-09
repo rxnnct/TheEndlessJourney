@@ -1,15 +1,13 @@
 package ru.rxnnct;
 
-import ru.rxnnct.userinterface.MainWindow;
+import ru.rxnnct.application.Application;
 
 /**
  * Main class
  *
  */
-public class Main
-{
-    public static void main( String[] args ) {
-        MainWindow mainWindow = new MainWindow();
-        mainWindow.newWindow();
+public class Main {
+    public static void main(String[] args) {
+        Application application = new Application();
     }
 }
