@@ -9,7 +9,12 @@ public class UserInterface {
 
     //constructor
     public UserInterface() {
-        this.mainFrame = new MainFrame();
+        mainFrame = new MainFrame();
+    }
+
+    public void drawMainMenu(){
+        MainMenu mainMenu = new MainMenu();
+        mainFrame.getFrame().add(mainMenu);
     }
 
 }
