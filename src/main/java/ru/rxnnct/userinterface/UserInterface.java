@@ -1,5 +1,7 @@
 package ru.rxnnct.userinterface;
 
+import java.awt.*;
+
 /**
  * Access for app
  *
@@ -15,6 +17,7 @@ public class UserInterface {
     public void drawMainMenu(){
         MainMenu mainMenu = new MainMenu();
         mainFrame.getFrame().add(mainMenu);
+        mainFrame.getFrame().getContentPane().setBackground(Color.white);
     }
 
 }
