@@ -5,12 +5,23 @@ import java.awt.*;
 import java.io.File;
 
 public class MainMenu extends JComponent {
-    private MainMenuItems currentMenuItem = MainMenuItems.NEW_GAME;
+
+    private MainMenuItems currentMenuItem = MainMenuItems.CONTINUE;
     Image menuItemContinue;
     Image menuItemNewGame;
     Image menuItemRecords;
     Image menuItemHelp;
 
+    //accessors
+    public MainMenuItems getCurrentMenuItem() {
+        return currentMenuItem;
+    }
+
+    public void setCurrentMenuItem(MainMenuItems currentMenuItem) {
+        this.currentMenuItem = currentMenuItem;
+    }
+
+    //methods
     public void setImagesToDisabledView(){
         menuItemContinue = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "cont1.png");
         menuItemNewGame = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "new1.png");
@@ -18,14 +29,8 @@ public class MainMenu extends JComponent {
         menuItemHelp = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "about1.png");
     }
 
-    public void paint(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
-
-        //Фон:
-        //frame.getContentPane().setBackground(Color.white);
-
-
-        //Меню:
+    public void paint(Graphics graphics) {
+        Graphics2D graphics2d = (Graphics2D) graphics;
         setImagesToDisabledView();
         switch (currentMenuItem) {
             case CONTINUE:
@@ -45,12 +50,14 @@ public class MainMenu extends JComponent {
                 menuItemHelp = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "about2.png");
                 break;
         }
-        g2.drawImage(menuItemContinue, 200, 120, this);
-        g2.drawImage(menuItemNewGame, 200, 180, this);
-        g2.drawImage(menuItemRecords, 200, 240, this);
-        g2.drawImage(menuItemHelp, 200, 300, this);
+        graphics2d.drawImage(menuItemContinue, 200, 120, this);
+        graphics2d.drawImage(menuItemNewGame, 200, 180, this);
+        graphics2d.drawImage(menuItemRecords, 200, 240, this);
+        graphics2d.drawImage(menuItemHelp, 200, 300, this);
 
         super.repaint();
     }
+
+
 
 }

@@ -4,5 +4,14 @@ public enum MainMenuItems {
     CONTINUE,
     NEW_GAME,
     RECORDS,
-    HELP
+    HELP;
+
+    public void setNext() {
+        //
+    }
+
+    public void setPrevious() {
+        //
+    }
+
 }
