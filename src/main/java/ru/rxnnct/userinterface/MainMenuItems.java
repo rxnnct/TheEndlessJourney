@@ -6,12 +6,11 @@ public enum MainMenuItems {
     RECORDS,
     HELP;
 
-    public void setNext() {
-        //
+    public MainMenuItems getNext() {
+        return values()[(ordinal() + 1) % values().length];
     }
 
-    public void setPrevious() {
-        //
+    public MainMenuItems getPrevious() {
+        return values()[(this.ordinal() + values().length - 1) % values().length];
     }
-
 }

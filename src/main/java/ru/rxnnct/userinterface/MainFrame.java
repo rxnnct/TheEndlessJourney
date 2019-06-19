@@ -47,20 +47,26 @@ class MainFrame {
                 if (Application.getInstance().getApplicationState() == ApplicationStates.MENU) {
                     switch (keyCode) {
                         case KeyEvent.VK_UP:
-                            if (UserInterface.getInstance().getMainMenu().getCurrentMenuItem() == MainMenuItems.CONTINUE){
-                                UserInterface.getInstance().getMainMenu().setCurrentMenuItem(MainMenuItems.HELP);
-                            } else {
-                                UserInterface.getInstance().getMainMenu().setCurrentMenuItem(MainMenuItems.NEW_GAME);
-                            }
+                            UserInterface.getInstance()
+                                    .getMainMenu()
+                                    .setCurrentMenuItem(
+                                            UserInterface.getInstance()
+                                                    .getMainMenu()
+                                                    .getCurrentMenuItem()
+                                                    .getPrevious()
+                                    );
                             break;
-//                        case KeyEvent.VK_DOWN:
-//                            if (MainMenu.menuItem == 3){
-//                                MainMenu.menuItem = 0;
-//                            } else {
-//                                MainMenu.menuItem++;
-//                            }
-//                            break;
-//                        case KeyEvent.VK_ENTER:
+                        case KeyEvent.VK_DOWN:
+                            UserInterface.getInstance()
+                                    .getMainMenu()
+                                    .setCurrentMenuItem(
+                                            UserInterface.getInstance()
+                                                    .getMainMenu()
+                                                    .getCurrentMenuItem()
+                                                    .getNext()
+                                    );
+                            break;
+//                      case KeyEvent.VK_ENTER:
 //                            try {
 //                                MainMenu.enterPressed();
 //                            } catch (IOException e1) {
