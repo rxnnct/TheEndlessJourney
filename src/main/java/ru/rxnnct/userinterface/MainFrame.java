@@ -49,22 +49,12 @@ class MainFrame {
                         case KeyEvent.VK_UP:
                             UserInterface.getInstance()
                                     .getMainMenu()
-                                    .setCurrentMenuItem(
-                                            UserInterface.getInstance()
-                                                    .getMainMenu()
-                                                    .getCurrentMenuItem()
-                                                    .getPrevious()
-                                    );
+                                    .setMenuItemToPrevious();
                             break;
                         case KeyEvent.VK_DOWN:
                             UserInterface.getInstance()
                                     .getMainMenu()
-                                    .setCurrentMenuItem(
-                                            UserInterface.getInstance()
-                                                    .getMainMenu()
-                                                    .getCurrentMenuItem()
-                                                    .getNext()
-                                    );
+                                    .setMenuItemToNext();
                             break;
 //                      case KeyEvent.VK_ENTER:
 //                            try {

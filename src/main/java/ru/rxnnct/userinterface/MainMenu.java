@@ -13,12 +13,12 @@ public class MainMenu extends JComponent {
     Image menuItemHelp;
 
     //accessors
-    public MainMenuItems getCurrentMenuItem() {
-        return currentMenuItem;
+    public void setMenuItemToNext() {
+        this.currentMenuItem = currentMenuItem.getNext();
     }
 
-    public void setCurrentMenuItem(MainMenuItems currentMenuItem) {
-        this.currentMenuItem = currentMenuItem;
+    public void setMenuItemToPrevious() {
+        this.currentMenuItem = currentMenuItem.getPrevious();
     }
 
     //methods
