@@ -56,13 +56,11 @@ class MainFrame {
                                     .getMainMenu()
                                     .setMenuItemToNext();
                             break;
-//                      case KeyEvent.VK_ENTER:
-//                            try {
-//                                MainMenu.enterPressed();
-//                            } catch (IOException e1) {
-//                                e1.printStackTrace();
-//                            }
-//                            break;
+                        case KeyEvent.VK_ENTER:
+                            UserInterface.getInstance()
+                                    .getMainMenu()
+                                    .enterPressed();
+                            break;
                     }
                 }
 

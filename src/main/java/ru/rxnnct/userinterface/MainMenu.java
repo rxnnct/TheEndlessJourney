@@ -1,5 +1,7 @@
 package ru.rxnnct.userinterface;
 
+import ru.rxnnct.application.ApplicationStates;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -54,10 +56,25 @@ public class MainMenu extends JComponent {
         graphics2d.drawImage(menuItemNewGame, 200, 180, this);
         graphics2d.drawImage(menuItemRecords, 200, 240, this);
         graphics2d.drawImage(menuItemHelp, 200, 300, this);
-
         super.repaint();
     }
 
+    public void enterPressed(){
+        switch(currentMenuItem) {
+            case CONTINUE:
+                UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
+                break;
+            case NEW_GAME:
+                UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
+                break;
+            case RECORDS:
+                UserInterface.getInstance().changeApplicationState(ApplicationStates.RECORDS);
+                break;
+            case HELP:
+                UserInterface.getInstance().changeApplicationState(ApplicationStates.HELP);
+                break;
+        }
+    }
 
 
 }

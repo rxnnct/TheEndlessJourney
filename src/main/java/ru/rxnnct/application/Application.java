@@ -21,4 +21,8 @@ public class Application {
     public ApplicationStates getApplicationState() {
         return applicationState;
     }
+
+    public void setApplicationState(ApplicationStates applicationState) {
+        this.applicationState = applicationState;
+    }
 }
