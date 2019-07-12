@@ -1,5 +1,6 @@
 package ru.rxnnct.userinterface;
 
+import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
 
 import javax.swing.*;
@@ -32,46 +33,53 @@ public class MainMenu extends JComponent {
     }
 
     public void paint(Graphics graphics) {
-        Graphics2D graphics2d = (Graphics2D) graphics;
-        setImagesToDisabledView();
-        switch (currentMenuItem) {
-            case CONTINUE:
-                setImagesToDisabledView();
-                menuItemContinue = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "cont2.png");
-                break;
-            case NEW_GAME:
-                setImagesToDisabledView();
-                menuItemNewGame = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "new2.png");
-                break;
-            case RECORDS:
-                setImagesToDisabledView();
-                menuItemRecords = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "rec2.png");
-                break;
-            case HELP:
-                setImagesToDisabledView();
-                menuItemHelp = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "about2.png");
-                break;
+        if (Application.getInstance().getApplicationState() == ApplicationStates.MENU) {
+            Graphics2D graphics2d = (Graphics2D) graphics;
+            setImagesToDisabledView();
+            switch (currentMenuItem) {
+                case CONTINUE:
+                    setImagesToDisabledView();
+                    menuItemContinue = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "cont2.png");
+                    break;
+                case NEW_GAME:
+                    setImagesToDisabledView();
+                    menuItemNewGame = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "new2.png");
+                    break;
+                case RECORDS:
+                    setImagesToDisabledView();
+                    menuItemRecords = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "rec2.png");
+                    break;
+                case HELP:
+                    setImagesToDisabledView();
+                    menuItemHelp = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "about2.png");
+                    break;
+            }
+            graphics2d.drawImage(menuItemContinue, 200, 120, this);
+            graphics2d.drawImage(menuItemNewGame, 200, 180, this);
+            graphics2d.drawImage(menuItemRecords, 200, 240, this);
+            graphics2d.drawImage(menuItemHelp, 200, 300, this);
+            super.repaint();
         }
-        graphics2d.drawImage(menuItemContinue, 200, 120, this);
-        graphics2d.drawImage(menuItemNewGame, 200, 180, this);
-        graphics2d.drawImage(menuItemRecords, 200, 240, this);
-        graphics2d.drawImage(menuItemHelp, 200, 300, this);
-        super.repaint();
     }
 
     public void enterPressed(){
         switch(currentMenuItem) {
             case CONTINUE:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
+                UserInterface.getInstance().changeCurrentFrame();
                 break;
             case NEW_GAME:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
+                UserInterface.getInstance().changeCurrentFrame();
                 break;
             case RECORDS:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.RECORDS);
+                UserInterface.getInstance().changeCurrentFrame();
                 break;
             case HELP:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.HELP);
+                UserInterface.getInstance().drawHelp();
+                UserInterface.getInstance().changeCurrentFrame();
                 break;
         }
     }
