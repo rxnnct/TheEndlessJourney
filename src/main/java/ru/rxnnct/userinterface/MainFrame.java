@@ -6,7 +6,6 @@ import ru.rxnnct.application.ApplicationStates;
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 
 class MainFrame {
     private String FRAME_TITLE = "The Endless Journey";
