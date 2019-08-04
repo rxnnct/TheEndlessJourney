@@ -6,15 +6,21 @@ import ru.rxnnct.application.ApplicationStates;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainMenu extends JComponent {
 
-    private MainMenuItems currentMenuItem = MainMenuItems.CONTINUE;
-    Image menuItemContinue;
-    Image menuItemNewGame;
-    Image menuItemRecords;
-    Image menuItemHelp;
+    private final int MENU_ITEMS_LEFT_MARGIN = 200;
+    private final int MENU_ITEMS_TOP_MARGIN = 120;
+    private final int MENU_ITEMS_TOP_SPACING = 60;
+    private final String ASSETS_MENU_PATH = "assets" + File.separator + "menu" + File.separator;
 
+    private MainMenuItems currentMenuItem = MainMenuItems.CONTINUE;
+    private ArrayList<Image> menuItems = new ArrayList<Image>();
+
+    
     //accessors
     public void setMenuItemToNext() {
         this.currentMenuItem = currentMenuItem.getNext();
@@ -24,12 +30,20 @@ public class MainMenu extends JComponent {
         this.currentMenuItem = currentMenuItem.getPrevious();
     }
 
+    //constructors
+    MainMenu() {
+        menuItems.add(Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "cont1.png"));
+        menuItems.add(Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "new1.png"));
+        menuItems.add(Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "rec1.png"));
+        menuItems.add(Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "about1.png"));
+    }
+
     //methods
     public void setImagesToDisabledView(){
-        menuItemContinue = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "cont1.png");
-        menuItemNewGame = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "new1.png");
-        menuItemRecords = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "rec1.png");
-        menuItemHelp = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "about1.png");
+        menuItems.set(0, Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "cont1.png"));
+        menuItems.set(1, Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "new1.png"));
+        menuItems.set(2, Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "rec1.png"));
+        menuItems.set(3, Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "about1.png"));
     }
 
     public void paint(Graphics graphics) {
@@ -39,25 +53,27 @@ public class MainMenu extends JComponent {
             switch (currentMenuItem) {
                 case CONTINUE:
                     setImagesToDisabledView();
-                    menuItemContinue = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "cont2.png");
+                    menuItems.set(0, Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "cont2.png"));
                     break;
                 case NEW_GAME:
                     setImagesToDisabledView();
-                    menuItemNewGame = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "new2.png");
+                    menuItems.set(1, Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "new2.png"));
                     break;
                 case RECORDS:
                     setImagesToDisabledView();
-                    menuItemRecords = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "rec2.png");
+                    menuItems.set(2, Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "rec2.png"));
                     break;
                 case HELP:
                     setImagesToDisabledView();
-                    menuItemHelp = Toolkit.getDefaultToolkit().getImage("assets" + File.separator + "menu" + File.separator + "about2.png");
+                    menuItems.set(3, Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "about2.png"));
                     break;
             }
-            graphics2d.drawImage(menuItemContinue, 200, 120, this);
-            graphics2d.drawImage(menuItemNewGame, 200, 180, this);
-            graphics2d.drawImage(menuItemRecords, 200, 240, this);
-            graphics2d.drawImage(menuItemHelp, 200, 300, this);
+
+            int currentMenuItemTopMargin = MENU_ITEMS_TOP_MARGIN;
+            for (int i = 0; i < menuItems.size(); i++) {
+                graphics2d.drawImage(menuItems.get(i), MENU_ITEMS_LEFT_MARGIN, currentMenuItemTopMargin, this);
+                currentMenuItemTopMargin += MENU_ITEMS_TOP_SPACING;
+            }
             super.repaint();
         }
     }
