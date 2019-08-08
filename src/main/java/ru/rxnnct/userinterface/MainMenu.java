@@ -17,7 +17,7 @@ public class MainMenu extends JComponent {
     private final String ASSETS_MENU_PATH = "assets" + File.separator + "menu" + File.separator;
 
     private MainMenuItems currentMenuItem = MainMenuItems.CONTINUE;
-    private ArrayList<Image> menuItems = new ArrayList<Image>();
+    private ArrayList<Image> menuItems = new ArrayList<>();
 
     
     //accessors
