@@ -7,8 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collections;
 
 public class MainMenu extends JComponent {
 
@@ -32,10 +31,12 @@ public class MainMenu extends JComponent {
 
     //constructors
     MainMenu() {
-        menuItems.add(Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "cont1.png"));
-        menuItems.add(Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "new1.png"));
-        menuItems.add(Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "rec1.png"));
-        menuItems.add(Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "about1.png"));
+        Collections.addAll(menuItems,
+                Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "cont1.png"),
+                Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "new1.png"),
+                Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "rec1.png"),
+                Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "about1.png")
+        );
     }
 
     //methods
@@ -82,22 +83,19 @@ public class MainMenu extends JComponent {
         switch(currentMenuItem) {
             case CONTINUE:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
-                UserInterface.getInstance().changeCurrentFrame();
                 break;
             case NEW_GAME:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
-                UserInterface.getInstance().changeCurrentFrame();
                 break;
             case RECORDS:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.RECORDS);
-                UserInterface.getInstance().changeCurrentFrame();
                 break;
             case HELP:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.HELP);
                 UserInterface.getInstance().drawHelp();
-                UserInterface.getInstance().changeCurrentFrame();
                 break;
         }
+        UserInterface.getInstance().changeCurrentFrame();
     }
 
 
