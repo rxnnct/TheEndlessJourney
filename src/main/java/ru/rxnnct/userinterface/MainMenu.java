@@ -2,6 +2,7 @@ package ru.rxnnct.userinterface;
 
 import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
+import ru.rxnnct.application.GameMap;
 
 import javax.swing.*;
 import java.awt.*;
@@ -83,6 +84,10 @@ public class MainMenu extends JComponent {
         switch(currentMenuItem) {
             case CONTINUE:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
+                //begin test output
+                GameMap gameMap = new GameMap();
+                gameMap.generation();
+                //end
                 break;
             case NEW_GAME:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);

@@ -19,5 +19,18 @@ public class GameMap {
                 map[row][col] = MAP_FIELD_EMPTY;
             }
         }
+
+
+        //lines here
+
+
+        //begin test output
+        for (int row = 0; row < MAP_SIZE_ROWS; row++){
+            for (int col = 0; col < MAP_SIZE_COLS; col++){
+                System.out.print(map[row][col] + " ");
+            }
+            System.out.println();
+        }
+        //end
     }
 }
