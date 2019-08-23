@@ -86,7 +86,7 @@ public class MainMenu extends JComponent {
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
                 //begin test output
                 GameMap gameMap = new GameMap();
-                gameMap.generation();
+                gameMap.generate();
                 //end
                 break;
             case NEW_GAME:

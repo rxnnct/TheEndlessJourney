@@ -1,5 +1,7 @@
 package ru.rxnnct.application;
 
+import java.util.ArrayList;
+
 public class GameMap {
     static private int MAP_SIZE_ROWS = 10;
     static private int MAP_SIZE_COLS = 10;
@@ -13,16 +15,9 @@ public class GameMap {
 
     private int[][] map = new int[MAP_SIZE_ROWS][MAP_SIZE_COLS];
 
-    public void generation(){
-        for (int row = 0; row < MAP_SIZE_ROWS; row++){
-            for (int col = 0; col < MAP_SIZE_COLS; col++){
-                map[row][col] = MAP_FIELD_EMPTY;
-            }
-        }
-
-
-        //lines here
-
+    public void generate(){
+        clear();
+        createCorridor();
 
         //begin test output
         for (int row = 0; row < MAP_SIZE_ROWS; row++){
@@ -33,4 +28,19 @@ public class GameMap {
         }
         //end
     }
+
+    private void clear(){
+        for (int row = 0; row < MAP_SIZE_ROWS; row++){
+            for (int col = 0; col < MAP_SIZE_COLS; col++){
+                map[row][col] = MAP_FIELD_EMPTY;
+            }
+        }
+    }
+
+    private void createCorridor(){
+        ArrayList<Integer> temporaryList = new ArrayList<Integer>();
+        temporaryList.clear();
+        int[][] startArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2];
+    }
+
 }
