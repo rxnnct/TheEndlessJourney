@@ -44,11 +44,11 @@ public class GameMap {
         ArrayList<Integer> temporaryList = new ArrayList<>();
         temporaryList.clear();
         int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
-        int corridorCounter = 0; //lines
+        int corridorsAcrossLineCounter = 0; //lines
         for (int i = 0; i < numberOfLines; i++) {
             temporaryList.add(i);
         }
-        while (corridorCounter < corridorsAcrossLine){
+        while (corridorsAcrossLineCounter < corridorsAcrossLine){
             int nextCorridorLocation = temporaryList.get(RandomGenerator.getInstance().nextInt(temporaryList.size()));
             for (int i = 0; i < temporaryList.size(); i++) { //delete by index of list
                 if (temporaryList.get(i) == nextCorridorLocation){
@@ -57,7 +57,7 @@ public class GameMap {
             }
             int counter = 0;
             for (int i = 0; i < lineLength; i++){
-                if (isHorisontal == true){
+                if (isHorisontal){
                     map[nextCorridorLocation][i] = MAP_FIELD_CORRIDOR;
                     if (i == 0){
                         endsArray[0][counter] = nextCorridorLocation;
@@ -83,7 +83,7 @@ public class GameMap {
                     }
                 }
             }
-            corridorCounter++;
+            corridorsAcrossLineCounter++;
         }
         //begin test output -------
         for (int row = 0; row < 2; row++){
