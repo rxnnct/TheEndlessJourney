@@ -16,13 +16,15 @@ public class GameMap {
     //static final private int MAP_FIELD_ENEMY = 3; //or make map classes like player
 
     private int[][] map = new int[MAP_SIZE_ROWS][MAP_SIZE_COLS];
+    private int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
 
     public void generate(){
         clear();
         createCorridor(true, MAP_SIZE_COLS, MAP_SIZE_ROWS, CORRIDORS_IN_ROWS);
         createCorridor(false, MAP_SIZE_ROWS, MAP_SIZE_COLS, CORRIDORS_IN_COLS);
+        createStartAndEndPositions();
 
-        //begin test output
+        //begin test output-------
         for (int row = 0; row < MAP_SIZE_ROWS; row++){
             for (int col = 0; col < MAP_SIZE_COLS; col++){
                 System.out.print(map[row][col] + " ");
@@ -43,7 +45,7 @@ public class GameMap {
     private void createCorridor(boolean isHorisontal, int lineLength, int numberOfLines, int corridorsAcrossLine){
         ArrayList<Integer> temporaryList = new ArrayList<>();
         temporaryList.clear();
-        int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
+
         int corridorsAcrossLineCounter = 0; //lines
         for (int i = 0; i < numberOfLines; i++) {
             temporaryList.add(i);
@@ -93,6 +95,21 @@ public class GameMap {
             System.out.println();
         }
         //end
+    }
+
+    private void createStartAndEndPositions(){
+        int tempRandStart = RandomGenerator.getInstance().nextInt((endsArray[0].length));
+//        characterPositionI = endsArray[0][tempRandStart];
+//        characterPositionJ = endsArray[1][tempRandStart];
+        boolean flag = false;
+        int tempRandFinal = 0;
+        while (!flag){
+            tempRandFinal = RandomGenerator.getInstance().nextInt((endsArray[0].length));
+            if (tempRandFinal != tempRandStart){
+                flag = true;
+            }
+        }
+        map[endsArray[0][tempRandFinal]][endsArray[1][tempRandFinal]] = MAP_FIELD_EXIT;
     }
 
 }
