@@ -17,6 +17,7 @@ public class GameMap {
 
     private int[][] map = new int[MAP_SIZE_ROWS][MAP_SIZE_COLS];
     private int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
+    private int endsArrayElementsCounter = 0;
 
     public void generate(){
         clear();
@@ -57,31 +58,30 @@ public class GameMap {
                     temporaryList.remove(i);
                 }
             }
-            int counter = 0;
             for (int i = 0; i < lineLength; i++){
                 if (isHorisontal){
                     map[nextCorridorLocation][i] = MAP_FIELD_CORRIDOR;
                     if (i == 0){
-                        endsArray[0][counter] = nextCorridorLocation;
-                        endsArray[1][counter] = 0;
-                        counter++;
+                        endsArray[0][endsArrayElementsCounter] = nextCorridorLocation;
+                        endsArray[1][endsArrayElementsCounter] = 0;
+                        endsArrayElementsCounter++;
                     }
                     if (i == lineLength - 1){
-                        endsArray[0][counter] = nextCorridorLocation;
-                        endsArray[1][counter] = lineLength - 1;
-                        counter++;
+                        endsArray[0][endsArrayElementsCounter] = nextCorridorLocation;
+                        endsArray[1][endsArrayElementsCounter] = lineLength - 1;
+                        endsArrayElementsCounter++;
                     }
                 } else {
                     map[i][nextCorridorLocation] = MAP_FIELD_CORRIDOR;
                     if (i == 0){
-                        endsArray[0][counter] = 0;
-                        endsArray[1][counter] = nextCorridorLocation;
-                        counter++;
+                        endsArray[0][endsArrayElementsCounter] = 0;
+                        endsArray[1][endsArrayElementsCounter] = nextCorridorLocation;
+                        endsArrayElementsCounter++;
                     }
                     if (i == lineLength - 1){
-                        endsArray[0][counter] = lineLength - 1;
-                        endsArray[1][counter] = nextCorridorLocation;
-                        counter++;
+                        endsArray[0][endsArrayElementsCounter] = lineLength - 1;
+                        endsArray[1][endsArrayElementsCounter] = nextCorridorLocation;
+                        endsArrayElementsCounter++;
                     }
                 }
             }
