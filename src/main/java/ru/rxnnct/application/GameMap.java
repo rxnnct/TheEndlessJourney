@@ -2,6 +2,7 @@ package ru.rxnnct.application;
 
 import ru.rxnnct.application.util.RandomGenerator;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class GameMap {
@@ -17,6 +18,7 @@ public class GameMap {
 
     private int[][] map = new int[MAP_SIZE_ROWS][MAP_SIZE_COLS];
     private int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
+    private ArrayList<Enemy> enemies = new ArrayList<>();
     private int endsArrayElementsCounter = 0;
 
     public void generate(){
@@ -26,6 +28,7 @@ public class GameMap {
         createStartAndEndPositions();
 
         //begin test output-------
+        map[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol()] = 5;
         for (int row = 0; row < MAP_SIZE_ROWS; row++){
             for (int col = 0; col < MAP_SIZE_COLS; col++){
                 System.out.print(map[row][col] + " ");
@@ -91,8 +94,8 @@ public class GameMap {
 
     private void createStartAndEndPositions(){
         int tempRandStart = RandomGenerator.getInstance().nextInt((endsArray[0].length));
-//        characterPositionI = endsArray[0][tempRandStart];
-//        characterPositionJ = endsArray[1][tempRandStart];
+        Player.getInstance().setCharacterPositionRow(endsArray[0][tempRandStart]);
+        Player.getInstance().setCharacterPositionCol(endsArray[1][tempRandStart]);
         boolean flag = false;
         int tempRandFinal = 0;
         while (!flag){

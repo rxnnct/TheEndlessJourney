@@ -2,4 +2,31 @@ package ru.rxnnct.application;
 
 public class GameCharacter {
     private int currentHitPoints;
+    private int characterPositionCol;
+    private int characterPositionRow;
+
+    //accessors
+    public int getCurrentHitPoints() {
+        return currentHitPoints;
+    }
+
+    public void setCurrentHitPoints(int currentHitPoints) {
+        this.currentHitPoints = currentHitPoints;
+    }
+
+    public int getCharacterPositionCol() {
+        return characterPositionCol;
+    }
+
+    public void setCharacterPositionCol(int characterPositionCol) {
+        this.characterPositionCol = characterPositionCol;
+    }
+
+    public int getCharacterPositionRow() {
+        return characterPositionRow;
+    }
+
+    public void setCharacterPositionRow(int characterPositionRow) {
+        this.characterPositionRow = characterPositionRow;
+    }
 }
