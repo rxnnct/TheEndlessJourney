@@ -2,8 +2,8 @@ package ru.rxnnct.application;
 
 public class GameCharacter {
     private int currentHitPoints;
-    private int characterPositionCol;
-    private int characterPositionRow;
+    protected int characterPositionRow;
+    protected int characterPositionCol;
 
     //accessors
     public int getCurrentHitPoints() {

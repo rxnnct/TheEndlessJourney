@@ -10,6 +10,7 @@ public class GameMap {
     static private int MAP_SIZE_COLS = 10;
     static private int CORRIDORS_IN_ROWS = 2;
     static private int CORRIDORS_IN_COLS = 2;
+    static private int ENEMIES_IN_CORRIDOR = 2;
 
     static final private int MAP_FIELD_EMPTY = 0;
     static final private int MAP_FIELD_CORRIDOR = 1;
@@ -26,9 +27,10 @@ public class GameMap {
         createCorridor(true, MAP_SIZE_COLS, MAP_SIZE_ROWS, CORRIDORS_IN_ROWS);
         createCorridor(false, MAP_SIZE_ROWS, MAP_SIZE_COLS, CORRIDORS_IN_COLS);
         createStartAndEndPositions();
+        createEnemies();
 
         //begin test output-------
-        map[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol()] = 5;
+        map[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol()] = 4;
         for (int row = 0; row < MAP_SIZE_ROWS; row++){
             for (int col = 0; col < MAP_SIZE_COLS; col++){
                 System.out.print(map[row][col] + " ");
@@ -106,5 +108,14 @@ public class GameMap {
         }
         map[endsArray[0][tempRandFinal]][endsArray[1][tempRandFinal]] = MAP_FIELD_EXIT;
     }
+
+    private void createEnemies(){
+        enemies.clear();
+        while (enemies.size() < (CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * ENEMIES_IN_CORRIDOR){
+
+        }
+    }
+
+
 
 }
