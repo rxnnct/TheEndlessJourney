@@ -15,7 +15,6 @@ public class GameMap {
     static final private int MAP_FIELD_EMPTY = 0;
     static final private int MAP_FIELD_CORRIDOR = 1;
     static final private int MAP_FIELD_EXIT = 2;
-    //static final private int MAP_FIELD_ENEMY = 3; //or make map classes like player
 
     private int[][] map = new int[MAP_SIZE_ROWS][MAP_SIZE_COLS];
     private int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
@@ -36,6 +35,10 @@ public class GameMap {
                 System.out.print(map[row][col] + " ");
             }
             System.out.println();
+        }
+        for (Enemy enemy : enemies) {
+            System.out.print(enemy.getCharacterPositionRow() + " ");
+            System.out.println(enemy.getCharacterPositionCol());
         }
         //end
     }
@@ -110,9 +113,24 @@ public class GameMap {
     }
 
     private void createEnemies(){
+        //todo: remake method
         enemies.clear();
         while (enemies.size() < (CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * ENEMIES_IN_CORRIDOR){
-
+            for (int i = 0; i < MAP_SIZE_ROWS; i++) {
+                boolean isAdded = false;
+                for (int j = 0; j < MAP_SIZE_COLS; j++) {
+                    if (map[i][j] == MAP_FIELD_CORRIDOR){
+                        if (i != Player.getInstance().getCharacterPositionRow() && j != Player.getInstance().getCharacterPositionCol()){
+                            if (RandomGenerator.getInstance().nextInt((MAP_SIZE_ROWS * CORRIDORS_IN_ROWS + MAP_SIZE_COLS * CORRIDORS_IN_COLS) - CORRIDORS_IN_ROWS * CORRIDORS_IN_COLS) == 1){
+                                enemies.add(new Enemy(i, j));
+                                isAdded = true;
+                            }
+                        }
+                    }
+                }
+                if (isAdded)
+                    break;
+            }
         }
     }
 

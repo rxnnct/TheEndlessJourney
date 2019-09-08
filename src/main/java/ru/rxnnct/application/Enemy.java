@@ -5,5 +5,6 @@ public class Enemy extends GameCharacter {
     Enemy(int characterPositionRow, int characterPositionCol){
         this.characterPositionRow = characterPositionRow;
         this.characterPositionCol = characterPositionCol;
+        //todo: add initialization here
     }
 }
