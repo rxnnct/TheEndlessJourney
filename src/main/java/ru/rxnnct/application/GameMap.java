@@ -17,6 +17,7 @@ public class GameMap {
 
     private int[][] map = new int[MAP_SIZE_ROWS][MAP_SIZE_COLS];
     private int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
+
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private int endsArrayElementsCounter = 0;
 
@@ -27,6 +28,10 @@ public class GameMap {
     //accessors
     public int[][] getMap() {
         return map;
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
     }
 
     public void generate(){

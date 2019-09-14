@@ -34,6 +34,14 @@ public class Application {
     //methods
     public void nextLevel(){
         currentGameMap = new GameMap();
+        Player.getInstance().nextStage();
+        Player.getInstance().setCurrentHitPoints(Player.getInstance().MAXIMUM_HIT_POINTS);
+    }
+
+    public void newGame(){
+        Player.getInstance().setCurrentStage(0);
+        Player.getInstance().setScore(0);
+        nextLevel();
     }
 
 }

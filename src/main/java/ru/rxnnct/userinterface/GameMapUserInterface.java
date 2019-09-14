@@ -2,6 +2,7 @@ package ru.rxnnct.userinterface;
 
 import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
+import ru.rxnnct.application.Enemy;
 import ru.rxnnct.application.Player;
 
 import javax.swing.*;
@@ -25,10 +26,26 @@ public class GameMapUserInterface extends JComponent {
                 }
             }
 
+            //Enemies
+            Image enemySprite = Toolkit.getDefaultToolkit().getImage(ASSETS_GAME_MAP_PATH + "enemy.png");
+            for (Enemy enemy : Application.getInstance().getCurrentGameMap().getEnemies()) {
+                graphics2d.drawImage(enemySprite, enemy.getCharacterPositionCol() * TILE_SIZE + 3 * TILE_SIZE
+                        , enemy.getCharacterPositionRow() * TILE_SIZE + 1 * TILE_SIZE, this);
+            }
+
             //Player
             Image characterSprite = Toolkit.getDefaultToolkit().getImage(ASSETS_GAME_MAP_PATH + "char.png");
             graphics2d.drawImage(characterSprite, Player.getInstance().getCharacterPositionCol() * TILE_SIZE + 3 * TILE_SIZE
                     , Player.getInstance().getCharacterPositionRow() * TILE_SIZE + 1 * TILE_SIZE, this);
+
+            //Info
+            graphics2d.setPaint(Color.WHITE);
+            Font currentFont = graphics2d.getFont();
+            graphics2d.setFont(currentFont.deriveFont(currentFont.getSize() * 2F));
+            //todo:
+            graphics2d.drawString("Stage: " + Player.getInstance().getCurrentStage() + "   Health: " + Player.getInstance().getCurrentHitPoints()
+                    + "   Score: " + Player.getInstance().getScore(), 10, 30);
+
             super.repaint();
         }
     }

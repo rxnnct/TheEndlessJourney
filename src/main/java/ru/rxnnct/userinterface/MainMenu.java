@@ -85,7 +85,7 @@ public class MainMenu extends JComponent {
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
                 break;
             case NEW_GAME:
-                Application.getInstance().nextLevel();
+                Application.getInstance().newGame();
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
                 UserInterface.getInstance().drawGameMapUserInterface();
 
