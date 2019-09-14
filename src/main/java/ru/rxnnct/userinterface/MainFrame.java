@@ -66,7 +66,11 @@ class MainFrame {
 
                 if (Application.getInstance().getApplicationState() == ApplicationStates.MAP) {
                     switch (keyCode) {
-                        //
+                        case KeyEvent.VK_ESCAPE:
+                            UserInterface.getInstance()
+                                    .getGameMapUserInterface()
+                                    .escPressed();
+                            break;
                     }
                 }
 

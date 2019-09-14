@@ -6,7 +6,7 @@ public class Application {
     private static Application ourInstance = new Application();
 
     private ApplicationStates applicationState;
-    private GameMap currentGameMap = new GameMap();
+    private GameMap currentGameMap;
 
     //constructor
     private Application() {
@@ -32,6 +32,8 @@ public class Application {
     }
 
     //methods
-
+    public void nextLevel(){
+        currentGameMap = new GameMap();
+    }
 
 }

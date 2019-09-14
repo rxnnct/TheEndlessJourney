@@ -8,9 +8,9 @@ import java.awt.*;
 public class UserInterface {
     private static UserInterface ourInstance = new UserInterface();
     private MainFrame mainFrame;
-    private MainMenu mainMenu;
-    private Help help;
-    private GameMapUserInterface gameMapUserInterface;
+    private MainMenu mainMenu = new MainMenu();
+    private Help help = new Help();
+    private GameMapUserInterface gameMapUserInterface = new GameMapUserInterface();
 
     //constructor
     private UserInterface() {
@@ -31,21 +31,25 @@ public class UserInterface {
         return help;
     }
 
+    public GameMapUserInterface getGameMapUserInterface() {
+        return gameMapUserInterface;
+    }
+
     //methods
     public void drawMainMenu(){
-        mainMenu = new MainMenu();
+        //mainMenu = new MainMenu();
         mainFrame.getFrame().add(mainMenu);
         mainFrame.getFrame().getContentPane().setBackground(Color.white);
     }
 
     public void drawHelp(){
-        help = new Help();
+        //help = new Help();
         mainFrame.getFrame().add(help);
         mainFrame.getFrame().getContentPane().setBackground(Color.white);
     }
 
     public void drawGameMapUserInterface(){
-        gameMapUserInterface = new GameMapUserInterface();
+        //gameMapUserInterface = new GameMapUserInterface();
         mainFrame.getFrame().add(gameMapUserInterface);
         mainFrame.getFrame().getContentPane().setBackground(Color.black);
     }
@@ -54,15 +58,16 @@ public class UserInterface {
         Application.getInstance().setApplicationState(applicationState);
     }
 
+
     public void changeCurrentFrame() { //execute (old name)
+        //maybe delete
         switch(Application.getInstance().getApplicationState()) {
             case MENU:
                 mainFrame.getFrame().add(mainMenu);
                 break;
-//            case 1:
-//                w.add(canvMap);
-//                GameMap.changeCurrentFrame();
-//                break;
+            case MAP:
+                mainFrame.getFrame().add(gameMapUserInterface);
+                break;
 //            case 2:
 //                w.add(canvBattle);
 //                GameBattle.enemy.artificialIntelligence();
@@ -73,9 +78,9 @@ public class UserInterface {
 //            case 4:
 //                w.add(canvStats);
 //                break;
-//            case 5:
-//                w.add(canvAbout);
-//                break;
+            case HELP:
+                mainFrame.getFrame().add(help);
+                break;
         }
         mainFrame.getFrame().setVisible(true);
     }
