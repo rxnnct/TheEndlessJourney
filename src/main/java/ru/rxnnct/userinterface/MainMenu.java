@@ -84,13 +84,14 @@ public class MainMenu extends JComponent {
         switch(currentMenuItem) {
             case CONTINUE:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
-                //begin test output
-                GameMap gameMap = new GameMap();
-                gameMap.generate();
-                //end
                 break;
             case NEW_GAME:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
+                UserInterface.getInstance().drawGameMapUserInterface();
+                //begin test output
+//                GameMap gameMap = new GameMap();
+//                gameMap.generate();
+                //end
                 break;
             case RECORDS:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.RECORDS);

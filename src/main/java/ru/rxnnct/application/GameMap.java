@@ -2,7 +2,6 @@ package ru.rxnnct.application;
 
 import ru.rxnnct.application.util.RandomGenerator;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class GameMap {
@@ -21,15 +20,23 @@ public class GameMap {
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private int endsArrayElementsCounter = 0;
 
+    GameMap(){
+        generate();
+    }
+
+    //accessors
+    public int[][] getMap() {
+        return map;
+    }
+
     public void generate(){
         clear();
         createCorridor(true, MAP_SIZE_COLS, MAP_SIZE_ROWS, CORRIDORS_IN_ROWS);
         createCorridor(false, MAP_SIZE_ROWS, MAP_SIZE_COLS, CORRIDORS_IN_COLS);
         createStartAndEndPositions();
         createEnemies();
-
         //begin test output-------
-        map[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol()] = 4;
+        //map[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol()] = 4;
         for (int row = 0; row < MAP_SIZE_ROWS; row++){
             for (int col = 0; col < MAP_SIZE_COLS; col++){
                 System.out.print(map[row][col] + " ");

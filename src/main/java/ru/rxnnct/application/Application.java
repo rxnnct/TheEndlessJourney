@@ -6,6 +6,7 @@ public class Application {
     private static Application ourInstance = new Application();
 
     private ApplicationStates applicationState;
+    private GameMap currentGameMap = new GameMap();
 
     //constructor
     private Application() {
@@ -22,7 +23,15 @@ public class Application {
         return applicationState;
     }
 
+    public GameMap getCurrentGameMap() {
+        return currentGameMap;
+    }
+
     public void setApplicationState(ApplicationStates applicationState) {
         this.applicationState = applicationState;
     }
+
+    //methods
+
+
 }

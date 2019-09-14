@@ -10,6 +10,7 @@ public class UserInterface {
     private MainFrame mainFrame;
     private MainMenu mainMenu;
     private Help help;
+    private GameMapUserInterface gameMapUserInterface;
 
     //constructor
     private UserInterface() {
@@ -41,6 +42,12 @@ public class UserInterface {
         help = new Help();
         mainFrame.getFrame().add(help);
         mainFrame.getFrame().getContentPane().setBackground(Color.white);
+    }
+
+    public void drawGameMapUserInterface(){
+        gameMapUserInterface = new GameMapUserInterface();
+        mainFrame.getFrame().add(gameMapUserInterface);
+        mainFrame.getFrame().getContentPane().setBackground(Color.black);
     }
 
     public void changeApplicationState(ApplicationStates applicationState){
