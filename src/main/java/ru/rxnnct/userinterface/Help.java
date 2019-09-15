@@ -29,13 +29,13 @@ public class Help extends JComponent {
             graphics2d.drawString("от типа его владельца. На каждом следующем уровне здоровье противников", TEXT_LEFT_MARGIN, 325);
             graphics2d.drawString("увеличивается, а ваше - восстанавливается. Кроме того, количество", TEXT_LEFT_MARGIN, 350);
             graphics2d.drawString("очков за победы с каждым уровнем растет. Учитывайте это во время путешествия.", TEXT_LEFT_MARGIN, 375);
-            graphics2d.drawString("ESC: exit to main men.", TEXT_LEFT_MARGIN, 525);
+            graphics2d.drawString("ESC: exit to main menu.", TEXT_LEFT_MARGIN, 525);
 
             super.repaint();
         }
     }
 
-    public static void escPressed(){
+    public void escPressed(){
         Application.getInstance().setApplicationState(ApplicationStates.MENU);
         UserInterface.getInstance().changeCurrentFrame();
     }

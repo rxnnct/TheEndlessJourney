@@ -1,9 +1,6 @@
 package ru.rxnnct.userinterface;
 
-import ru.rxnnct.application.Application;
-import ru.rxnnct.application.ApplicationStates;
-import ru.rxnnct.application.Enemy;
-import ru.rxnnct.application.Player;
+import ru.rxnnct.application.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,7 +39,6 @@ public class GameMapUserInterface extends JComponent {
             graphics2d.setPaint(Color.WHITE);
             Font currentFont = graphics2d.getFont();
             graphics2d.setFont(currentFont.deriveFont(currentFont.getSize() * 2F));
-            //todo:
             graphics2d.drawString("Stage: " + Player.getInstance().getCurrentStage() + "   Health: " + Player.getInstance().getCurrentHitPoints()
                     + "   Score: " + Player.getInstance().getScore(), 10, 30);
 
@@ -50,10 +46,33 @@ public class GameMapUserInterface extends JComponent {
         }
     }
 
-    public static void escPressed(){
+    public void escPressed(){
         Application.getInstance().setApplicationState(ApplicationStates.MENU);
         UserInterface.getInstance().drawMainMenu();
         UserInterface.getInstance().changeCurrentFrame();
-
+        //todo: save game
     }
+
+    public void upPressed(){
+        if (Player.getInstance().getCharacterPositionRow() != 0){
+            switch (Application.getInstance().getCurrentGameMap().getMap()[Player.getInstance().getCharacterPositionRow() - 1][Player.getInstance().getCharacterPositionCol()]){
+                case GameMap.MAP_FIELD_CORRIDOR:
+                    Player.getInstance().changeCharacterPositionRow(-1);
+                    break;
+                case GameMap.MAP_FIELD_EXIT:
+                    //todo: new stage --- old diploma version: ProgressMethods.newFloor();
+                    break;
+                    //todo: enemies
+//                case 3:
+//                    Player.getInstance().changeCharacterPositionRow(-1);
+//                    ApplicationStates.progressState.mapArray[ApplicationStates.progressState.characterPositionI][ApplicationStates.progressState.characterPositionJ] = 1;
+//                    GameBattle.enemy.initialize();
+//                    ApplicationStates.currentActivity = 2;
+//                    MainWindow.execute();
+//                    break;
+            }
+        }
+    }
+
+
 }

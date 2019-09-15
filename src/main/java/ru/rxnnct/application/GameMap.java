@@ -5,15 +5,15 @@ import ru.rxnnct.application.util.RandomGenerator;
 import java.util.ArrayList;
 
 public class GameMap {
-    static private int MAP_SIZE_ROWS = 10;
-    static private int MAP_SIZE_COLS = 10;
-    static private int CORRIDORS_IN_ROWS = 2;
-    static private int CORRIDORS_IN_COLS = 2;
-    static private int ENEMIES_IN_CORRIDOR = 2;
+    private static int MAP_SIZE_ROWS = 10;
+    private static int MAP_SIZE_COLS = 10;
+    private static int CORRIDORS_IN_ROWS = 2;
+    private static int CORRIDORS_IN_COLS = 2;
+    private static int ENEMIES_IN_CORRIDOR = 2;
 
-    static final private int MAP_FIELD_EMPTY = 0;
-    static final private int MAP_FIELD_CORRIDOR = 1;
-    static final private int MAP_FIELD_EXIT = 2;
+    public static final int MAP_FIELD_EMPTY = 0;
+    public static final int MAP_FIELD_CORRIDOR = 1;
+    public static final int MAP_FIELD_EXIT = 2;
 
     private int[][] map = new int[MAP_SIZE_ROWS][MAP_SIZE_COLS];
     private int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
@@ -34,6 +34,7 @@ public class GameMap {
         return enemies;
     }
 
+    //methods
     public void generate(){
         clear();
         createCorridor(true, MAP_SIZE_COLS, MAP_SIZE_ROWS, CORRIDORS_IN_ROWS);
