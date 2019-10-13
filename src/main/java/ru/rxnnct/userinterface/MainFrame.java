@@ -76,6 +76,21 @@ class MainFrame {
                                     .getGameMapUserInterface()
                                     .upPressed();
                             break;
+                        case KeyEvent.VK_DOWN:
+                            UserInterface.getInstance()
+                                    .getGameMapUserInterface()
+                                    .downPressed();
+                            break;
+                        case KeyEvent.VK_LEFT:
+                            UserInterface.getInstance()
+                                    .getGameMapUserInterface()
+                                    .leftPressed();
+                            break;
+                        case KeyEvent.VK_RIGHT:
+                            UserInterface.getInstance()
+                                    .getGameMapUserInterface()
+                                    .rightPressed();
+                            break;
                     }
                 }
 

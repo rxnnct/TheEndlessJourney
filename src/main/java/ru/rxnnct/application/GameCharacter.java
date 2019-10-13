@@ -34,4 +34,8 @@ public class GameCharacter {
     public void changeCharacterPositionRow(int characterPositionDelta){
         this.characterPositionRow = this.characterPositionRow + characterPositionDelta;
     }
+
+    public void changeCharacterPositionCol(int characterPositionDelta){
+        this.characterPositionCol = this.characterPositionCol + characterPositionDelta;
+    }
 }

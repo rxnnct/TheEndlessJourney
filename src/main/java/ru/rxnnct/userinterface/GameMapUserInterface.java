@@ -74,5 +74,68 @@ public class GameMapUserInterface extends JComponent {
         }
     }
 
+    public void downPressed(){
+        if (Player.getInstance().getCharacterPositionRow() != GameMap.MAP_SIZE_ROWS - 1){
+            switch (Application.getInstance().getCurrentGameMap().getMap()[Player.getInstance().getCharacterPositionRow() + 1][Player.getInstance().getCharacterPositionCol()]){
+                case GameMap.MAP_FIELD_CORRIDOR:
+                    Player.getInstance().changeCharacterPositionRow(1);
+                    break;
+                case GameMap.MAP_FIELD_EXIT:
+                    //todo: new stage --- old diploma version: ProgressMethods.newFloor();
+                    break;
+                //todo: enemies
+//                case 3:
+//                    Player.getInstance().changeCharacterPositionRow(-1);
+//                    ApplicationStates.progressState.mapArray[ApplicationStates.progressState.characterPositionI][ApplicationStates.progressState.characterPositionJ] = 1;
+//                    GameBattle.enemy.initialize();
+//                    ApplicationStates.currentActivity = 2;
+//                    MainWindow.execute();
+//                    break;
+            }
+        }
+    }
+
+    public void leftPressed(){
+        if (Player.getInstance().getCharacterPositionCol() != 0){
+            switch (Application.getInstance().getCurrentGameMap().getMap()[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol() - 1]){
+                case GameMap.MAP_FIELD_CORRIDOR:
+                    Player.getInstance().changeCharacterPositionCol(-1);
+                    break;
+                case GameMap.MAP_FIELD_EXIT:
+                    //todo: new stage --- old diploma version: ProgressMethods.newFloor();
+                    break;
+                //todo: enemies
+//                case 3:
+//                    Player.getInstance().changeCharacterPositionRow(-1);
+//                    ApplicationStates.progressState.mapArray[ApplicationStates.progressState.characterPositionI][ApplicationStates.progressState.characterPositionJ] = 1;
+//                    GameBattle.enemy.initialize();
+//                    ApplicationStates.currentActivity = 2;
+//                    MainWindow.execute();
+//                    break;
+            }
+        }
+    }
+
+    public void rightPressed(){
+        if (Player.getInstance().getCharacterPositionCol() != GameMap.MAP_SIZE_COLS - 1){
+            switch (Application.getInstance().getCurrentGameMap().getMap()[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol() + 1]){
+                case GameMap.MAP_FIELD_CORRIDOR:
+                    Player.getInstance().changeCharacterPositionCol(1);
+                    break;
+                case GameMap.MAP_FIELD_EXIT:
+                    //todo: new stage --- old diploma version: ProgressMethods.newFloor();
+                    break;
+                //todo: enemies
+//                case 3:
+//                    Player.getInstance().changeCharacterPositionRow(-1);
+//                    ApplicationStates.progressState.mapArray[ApplicationStates.progressState.characterPositionI][ApplicationStates.progressState.characterPositionJ] = 1;
+//                    GameBattle.enemy.initialize();
+//                    ApplicationStates.currentActivity = 2;
+//                    MainWindow.execute();
+//                    break;
+            }
+        }
+    }
+
 
 }

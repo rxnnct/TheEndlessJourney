@@ -5,11 +5,11 @@ import ru.rxnnct.application.util.RandomGenerator;
 import java.util.ArrayList;
 
 public class GameMap {
-    private static int MAP_SIZE_ROWS = 10;
-    private static int MAP_SIZE_COLS = 10;
-    private static int CORRIDORS_IN_ROWS = 2;
-    private static int CORRIDORS_IN_COLS = 2;
-    private static int ENEMIES_IN_CORRIDOR = 2;
+    public static final int MAP_SIZE_ROWS = 10;
+    public static final int MAP_SIZE_COLS = 10;
+    public static final int CORRIDORS_IN_ROWS = 2;
+    public static final int CORRIDORS_IN_COLS = 2;
+    public static final int ENEMIES_IN_CORRIDOR = 2;
 
     public static final int MAP_FIELD_EMPTY = 0;
     public static final int MAP_FIELD_CORRIDOR = 1;
@@ -133,7 +133,7 @@ public class GameMap {
                 boolean isAdded = false;
                 for (int j = 0; j < MAP_SIZE_COLS; j++) {
                     if (map[i][j] == MAP_FIELD_CORRIDOR){
-                        if (i != Player.getInstance().getCharacterPositionRow() && j != Player.getInstance().getCharacterPositionCol()){
+                        if ((i != Player.getInstance().getCharacterPositionRow()) || (j != Player.getInstance().getCharacterPositionCol())){
                             if (RandomGenerator.getInstance().nextInt((MAP_SIZE_ROWS * CORRIDORS_IN_ROWS + MAP_SIZE_COLS * CORRIDORS_IN_COLS) - CORRIDORS_IN_ROWS * CORRIDORS_IN_COLS) == 1){
                                 enemies.add(new Enemy(i, j));
                                 isAdded = true;
