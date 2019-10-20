@@ -25,10 +25,10 @@ public class Help extends JComponent {
             graphics2d.drawString("A: Blocking spell", TEXT_LEFT_MARGIN, 175);
             graphics2d.drawString("S: Health drain (ignores blocking and drains health)", TEXT_LEFT_MARGIN, 200);
             graphics2d.drawString("D: Heal", TEXT_LEFT_MARGIN, 225);
-            graphics2d.drawString("Противники обладают различным поведением во время, которое зависит", TEXT_LEFT_MARGIN, 300);
-            graphics2d.drawString("от типа его владельца. На каждом следующем уровне здоровье противников", TEXT_LEFT_MARGIN, 325);
-            graphics2d.drawString("увеличивается, а ваше - восстанавливается. Кроме того, количество", TEXT_LEFT_MARGIN, 350);
-            graphics2d.drawString("очков за победы с каждым уровнем растет. Учитывайте это во время путешествия.", TEXT_LEFT_MARGIN, 375);
+            graphics2d.drawString("Opponents have different behavior, which depends ", TEXT_LEFT_MARGIN, 300);
+            graphics2d.drawString("on the type of opponent. Each new level restores your health and ", TEXT_LEFT_MARGIN, 325);
+            graphics2d.drawString("increases the health of opponents. The number of points ", TEXT_LEFT_MARGIN, 350);
+            graphics2d.drawString("for the victory over the enemy is growing at each level.", TEXT_LEFT_MARGIN, 375);
             graphics2d.drawString("ESC: exit to main menu.", TEXT_LEFT_MARGIN, 525);
 
             super.repaint();
