@@ -71,8 +71,8 @@ public class MainMenu extends JComponent {
             }
 
             int currentMenuItemTopMargin = MENU_ITEMS_TOP_MARGIN;
-            for (int i = 0; i < menuItems.size(); i++) {
-                graphics2d.drawImage(menuItems.get(i), MENU_ITEMS_LEFT_MARGIN, currentMenuItemTopMargin, this);
+            for (Image menuItem : menuItems) {
+                graphics2d.drawImage(menuItem, MENU_ITEMS_LEFT_MARGIN, currentMenuItemTopMargin, this);
                 currentMenuItemTopMargin += MENU_ITEMS_TOP_SPACING;
             }
             super.repaint();

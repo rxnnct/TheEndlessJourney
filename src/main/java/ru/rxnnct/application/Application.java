@@ -35,7 +35,7 @@ public class Application {
     public void nextLevel(){
         currentGameMap = new GameMap();
         Player.getInstance().nextStage();
-        Player.getInstance().setCurrentHitPoints(Player.getInstance().MAXIMUM_HIT_POINTS);
+        Player.getInstance().setCurrentHitPoints(Player.MAXIMUM_HIT_POINTS);
     }
 
     public void newGame(){
