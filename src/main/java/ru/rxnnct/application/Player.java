@@ -44,7 +44,7 @@ public class Player extends GameCharacter  {
                     characterPositionRow--;
                     break;
                 case GameMap.MAP_FIELD_EXIT:
-                    //todo: new stage --- old diploma version: ProgressMethods.newFloor();
+                    Application.getInstance().getCurrentGameMap().newStage();
                     break;
                 //todo: enemies
 //                case 3:
@@ -65,7 +65,7 @@ public class Player extends GameCharacter  {
                     characterPositionRow++;
                     break;
                 case GameMap.MAP_FIELD_EXIT:
-                    //todo: new stage --- old diploma version: ProgressMethods.newFloor();
+                    Application.getInstance().getCurrentGameMap().newStage();
                     break;
                 //todo: enemies
 //                case 3:
@@ -86,7 +86,7 @@ public class Player extends GameCharacter  {
                     characterPositionCol--;
                     break;
                 case GameMap.MAP_FIELD_EXIT:
-                    //todo: new stage --- old diploma version: ProgressMethods.newFloor();
+                    Application.getInstance().getCurrentGameMap().newStage();
                     break;
                 //todo: enemies
 //                case 3:
@@ -107,7 +107,7 @@ public class Player extends GameCharacter  {
                     characterPositionCol++;
                     break;
                 case GameMap.MAP_FIELD_EXIT:
-                    //todo: new stage --- old diploma version: ProgressMethods.newFloor();
+                    Application.getInstance().getCurrentGameMap().newStage();
                     break;
                 //todo: enemies
 //                case 3:

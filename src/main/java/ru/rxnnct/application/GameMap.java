@@ -62,12 +62,12 @@ public class GameMap {
                 map[row][col] = MAP_FIELD_EMPTY;
             }
         }
+        endsArrayElementsCounter = 0;
     }
 
-    private void createCorridor(boolean isHorisontal, int lineLength, int numberOfLines, int corridorsAcrossLine){
+    private void createCorridor(boolean isHorizontal, int lineLength, int numberOfLines, int corridorsAcrossLine){
         ArrayList<Integer> temporaryList = new ArrayList<>();
         temporaryList.clear();
-
         int corridorsAcrossLineCounter = 0; //lines
         for (int i = 0; i < numberOfLines; i++) {
             temporaryList.add(i);
@@ -80,7 +80,7 @@ public class GameMap {
                 }
             }
             for (int i = 0; i < lineLength; i++){
-                if (isHorisontal){
+                if (isHorizontal){
                     map[nextCorridorLocation][i] = MAP_FIELD_CORRIDOR;
                     if (i == 0){
                         endsArray[0][endsArrayElementsCounter] = nextCorridorLocation;
@@ -145,6 +145,12 @@ public class GameMap {
                     break;
             }
         }
+    }
+
+    public void newStage(){
+        Player.getInstance().nextStage();
+        Player.getInstance().setCurrentHitPoints(Player.MAXIMUM_HIT_POINTS);
+        generate();
     }
 
 
