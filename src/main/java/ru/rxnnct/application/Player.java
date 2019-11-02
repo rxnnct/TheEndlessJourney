@@ -42,6 +42,7 @@ public class Player extends GameCharacter  {
             switch (Application.getInstance().getCurrentGameMap().getMap()[characterPositionRow - 1][characterPositionCol]){
                 case GameMap.MAP_FIELD_CORRIDOR:
                     characterPositionRow--;
+                    checkEnemy();
                     break;
                 case GameMap.MAP_FIELD_EXIT:
                     Application.getInstance().getCurrentGameMap().newStage();
@@ -63,6 +64,7 @@ public class Player extends GameCharacter  {
             switch (Application.getInstance().getCurrentGameMap().getMap()[characterPositionRow + 1][characterPositionCol]){
                 case GameMap.MAP_FIELD_CORRIDOR:
                     characterPositionRow++;
+                    checkEnemy();
                     break;
                 case GameMap.MAP_FIELD_EXIT:
                     Application.getInstance().getCurrentGameMap().newStage();
@@ -84,6 +86,7 @@ public class Player extends GameCharacter  {
             switch (Application.getInstance().getCurrentGameMap().getMap()[characterPositionRow][characterPositionCol - 1]){
                 case GameMap.MAP_FIELD_CORRIDOR:
                     characterPositionCol--;
+                    checkEnemy();
                     break;
                 case GameMap.MAP_FIELD_EXIT:
                     Application.getInstance().getCurrentGameMap().newStage();
@@ -105,6 +108,7 @@ public class Player extends GameCharacter  {
             switch (Application.getInstance().getCurrentGameMap().getMap()[characterPositionRow][characterPositionCol + 1]){
                 case GameMap.MAP_FIELD_CORRIDOR:
                     characterPositionCol++;
+                    checkEnemy();
                     break;
                 case GameMap.MAP_FIELD_EXIT:
                     Application.getInstance().getCurrentGameMap().newStage();
@@ -117,6 +121,19 @@ public class Player extends GameCharacter  {
 //                    ApplicationStates.currentActivity = 2;
 //                    MainWindow.execute();
 //                    break;
+            }
+        }
+    }
+
+    private void checkEnemy(){
+        for (Enemy enemy: Application.getInstance().getCurrentGameMap().getEnemies()){
+            if (enemy.getCharacterPositionCol() == Player.getInstance().getCharacterPositionCol()
+                    &&  enemy.getCharacterPositionRow() == Player.getInstance().getCharacterPositionRow()){
+//                System.out.println("IS ENEMY");
+//                System.out.println(enemy.hashCode());
+                //todo: fight
+                //todo: after fight: Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
+                break;
             }
         }
     }

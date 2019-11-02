@@ -41,19 +41,19 @@ public class GameMap {
         createCorridor(false, MAP_SIZE_ROWS, MAP_SIZE_COLS, CORRIDORS_IN_COLS);
         createStartAndEndPositions();
         createEnemies();
-        //begin test output-------
-        //map[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol()] = 4;
-        for (int row = 0; row < MAP_SIZE_ROWS; row++){
-            for (int col = 0; col < MAP_SIZE_COLS; col++){
-                System.out.print(map[row][col] + " ");
-            }
-            System.out.println();
-        }
-        for (Enemy enemy : enemies) {
-            System.out.print(enemy.getCharacterPositionRow() + " ");
-            System.out.println(enemy.getCharacterPositionCol());
-        }
-        //end
+//        //begin test output-------
+//        //map[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol()] = 4;
+//        for (int row = 0; row < MAP_SIZE_ROWS; row++){
+//            for (int col = 0; col < MAP_SIZE_COLS; col++){
+//                System.out.print(map[row][col] + " ");
+//            }
+//            System.out.println();
+//        }
+//        for (Enemy enemy : enemies) {
+//            System.out.print(enemy.getCharacterPositionRow() + " ");
+//            System.out.println(enemy.getCharacterPositionCol());
+//        }
+//        //end
     }
 
     private void clear(){
@@ -133,10 +133,12 @@ public class GameMap {
                 boolean isAdded = false;
                 for (int j = 0; j < MAP_SIZE_COLS; j++) {
                     if (map[i][j] == MAP_FIELD_CORRIDOR){
-                        if ((i != Player.getInstance().getCharacterPositionRow()) || (j != Player.getInstance().getCharacterPositionCol())){
-                            if (RandomGenerator.getInstance().nextInt((MAP_SIZE_ROWS * CORRIDORS_IN_ROWS + MAP_SIZE_COLS * CORRIDORS_IN_COLS) - CORRIDORS_IN_ROWS * CORRIDORS_IN_COLS) == 1){
-                                enemies.add(new Enemy(i, j));
-                                isAdded = true;
+                        if ((i != Player.getInstance().getCharacterPositionRow()) || (j != Player.getInstance().getCharacterPositionCol())) {
+                            if (!fieldContainsEnemy(i, j)) {
+                                if (RandomGenerator.getInstance().nextInt((MAP_SIZE_ROWS * CORRIDORS_IN_ROWS + MAP_SIZE_COLS * CORRIDORS_IN_COLS) - CORRIDORS_IN_ROWS * CORRIDORS_IN_COLS) == 1) {
+                                    enemies.add(new Enemy(i, j));
+                                    isAdded = true;
+                                }
                             }
                         }
                     }
@@ -145,6 +147,18 @@ public class GameMap {
                     break;
             }
         }
+    }
+
+    private boolean fieldContainsEnemy(int row, int col){
+        boolean containsEnemy = false;
+            for (Enemy enemy : enemies) {
+                if (enemy.getCharacterPositionCol() == col
+                        && enemy.getCharacterPositionRow() == row) {
+                    containsEnemy = true;
+                    break;
+                }
+            }
+        return containsEnemy;
     }
 
     public void newStage(){
