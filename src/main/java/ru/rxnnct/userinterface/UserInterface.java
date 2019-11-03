@@ -10,6 +10,7 @@ public class UserInterface {
     private MainFrame mainFrame;
     private MainMenu mainMenu = new MainMenu();
     private Help help = new Help();
+    private BattleUserInterface battleUserInterface = new BattleUserInterface();
     private GameMapUserInterface gameMapUserInterface = new GameMapUserInterface();
 
     //constructor
@@ -35,6 +36,10 @@ public class UserInterface {
         return gameMapUserInterface;
     }
 
+    public BattleUserInterface getBattleUserInterface() {
+        return battleUserInterface;
+    }
+
     //methods
     public void drawMainMenu(){
         //mainMenu = new MainMenu();
@@ -54,6 +59,11 @@ public class UserInterface {
         mainFrame.getFrame().getContentPane().setBackground(Color.black);
     }
 
+    public void drawBattleUserInterface(){
+        mainFrame.getFrame().add(battleUserInterface);
+        mainFrame.getFrame().getContentPane().setBackground(Color.white);
+    }
+
     public void changeApplicationState(ApplicationStates applicationState){
         Application.getInstance().setApplicationState(applicationState);
     }
@@ -68,10 +78,9 @@ public class UserInterface {
             case MAP:
                 mainFrame.getFrame().add(gameMapUserInterface);
                 break;
-//            case 2:
-//                w.add(canvBattle);
-//                GameBattle.enemy.artificialIntelligence();
-//                break;
+            case BATTLE:
+                mainFrame.getFrame().add(battleUserInterface);
+                break;
 //            case 3:
 //                w.add(canvResult);
 //                break;

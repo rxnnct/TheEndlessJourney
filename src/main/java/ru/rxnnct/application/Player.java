@@ -127,11 +127,12 @@ public class Player extends GameCharacter  {
 
     private void checkEnemy(){
         for (Enemy enemy: Application.getInstance().getCurrentGameMap().getEnemies()){
-            if (enemy.getCharacterPositionCol() == Player.getInstance().getCharacterPositionCol()
-                    &&  enemy.getCharacterPositionRow() == Player.getInstance().getCharacterPositionRow()){
+            if (enemy.getCharacterPositionCol() == characterPositionCol
+                    &&  enemy.getCharacterPositionRow() == characterPositionRow){
 //                System.out.println("IS ENEMY");
 //                System.out.println(enemy.hashCode());
                 //todo: fight
+                Application.getInstance().startBattle(enemy);
                 //todo: after fight: Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
                 break;
             }

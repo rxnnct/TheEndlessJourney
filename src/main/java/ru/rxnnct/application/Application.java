@@ -44,4 +44,10 @@ public class Application {
         nextLevel();
     }
 
+    public void startBattle(Enemy enemy){
+        this.applicationState = ApplicationStates.BATTLE;
+        Battle battle = new Battle(enemy);
+        UserInterface.getInstance().changeCurrentFrame();
+    }
+
 }
