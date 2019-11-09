@@ -9,10 +9,16 @@ public class Battle {
         this.enemy = enemy;
 
         //todo: delete this test
-        Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
-        Application.getInstance().setApplicationState(ApplicationStates.MAP);
-        UserInterface.getInstance().changeCurrentFrame();
-
+        new Thread(() -> {
+            try {
+                Thread.sleep(300);
+                Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
+                Application.getInstance().setApplicationState(ApplicationStates.MAP);
+                UserInterface.getInstance().changeCurrentFrame();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
 }

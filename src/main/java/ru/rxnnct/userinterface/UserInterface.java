@@ -54,7 +54,6 @@ public class UserInterface {
     }
 
     public void drawGameMapUserInterface(){
-        //gameMapUserInterface = new GameMapUserInterface();
         mainFrame.getFrame().add(gameMapUserInterface);
         mainFrame.getFrame().getContentPane().setBackground(Color.black);
     }
