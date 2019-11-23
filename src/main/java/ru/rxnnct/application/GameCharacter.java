@@ -1,5 +1,6 @@
 package ru.rxnnct.application;
 
+
 public class GameCharacter {
     protected int currentHitPoints;
     protected int characterPositionRow;
@@ -32,4 +33,26 @@ public class GameCharacter {
 
     //methods
 
+    public void useSkill(Skills skill, GameCharacter targetGameCharacter){
+        switch (skill){
+            case HIT:
+                System.out.println(this.hashCode() + " " + skill + " " + "Target " + targetGameCharacter.hashCode());
+                break;
+            case BLOCK:
+                System.out.println(this.hashCode() + " " + skill + " " + "Target " + targetGameCharacter.hashCode());
+                break;
+            case HEAL:
+                System.out.println(this.hashCode() + " " + skill + " " + "Target " + targetGameCharacter.hashCode());
+                break;
+            case LEECH:
+                System.out.println(this.hashCode() + " " + skill + " " + "Target " + targetGameCharacter.hashCode());
+                break;
+            case PENETRATE:
+                System.out.println(this.hashCode() + " " + skill + " " + "Target " + targetGameCharacter.hashCode());
+                break;
+            case REFLECT:
+                System.out.println(this.hashCode() + " " + skill + " " + "Target " + targetGameCharacter.hashCode());
+                break;
+        }
+    }
 }
