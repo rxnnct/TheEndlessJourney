@@ -1,6 +1,9 @@
-package ru.rxnnct.application;
+package ru.rxnnct.application.characters;
 
-public class Player extends GameCharacter  {
+import ru.rxnnct.application.Application;
+import ru.rxnnct.application.GameMap;
+
+public class Player extends GameCharacter {
     public static final int MAXIMUM_HIT_POINTS = 3000;
     private static Player ourInstance = new Player();
     private int currentStage;
@@ -8,6 +11,7 @@ public class Player extends GameCharacter  {
 
     //constructors
     private Player() {
+        maximumHitPoints = MAXIMUM_HIT_POINTS;
     }
 
     //accessors

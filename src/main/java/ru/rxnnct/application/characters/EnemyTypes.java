@@ -1,4 +1,4 @@
-package ru.rxnnct.application;
+package ru.rxnnct.application.characters;
 
 import ru.rxnnct.application.util.RandomGenerator;
 

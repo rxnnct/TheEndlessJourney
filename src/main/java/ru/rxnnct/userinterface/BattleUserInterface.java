@@ -2,8 +2,6 @@ package ru.rxnnct.userinterface;
 
 import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
-import ru.rxnnct.application.Enemy;
-import ru.rxnnct.application.Player;
 
 import javax.swing.*;
 import java.awt.*;

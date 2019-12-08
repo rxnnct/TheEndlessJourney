@@ -1,5 +1,7 @@
 package ru.rxnnct.application;
 
+import ru.rxnnct.application.characters.Enemy;
+import ru.rxnnct.application.characters.Player;
 import ru.rxnnct.application.util.RandomGenerator;
 
 import java.util.ArrayList;

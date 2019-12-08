@@ -1,5 +1,7 @@
 package ru.rxnnct.application;
 
+import ru.rxnnct.application.characters.Enemy;
+import ru.rxnnct.application.characters.Player;
 import ru.rxnnct.userinterface.UserInterface;
 
 public class Application {

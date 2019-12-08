@@ -1,6 +1,6 @@
 package ru.rxnnct.application;
 
-import ru.rxnnct.userinterface.UserInterface;
+import ru.rxnnct.application.characters.Enemy;
 
 public class Battle {
     private Enemy enemy;
