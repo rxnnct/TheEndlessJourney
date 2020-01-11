@@ -1,10 +1,11 @@
 package ru.rxnnct.application.characters;
 
 import ru.rxnnct.application.ApplicationStates;
+import ru.rxnnct.application.util.RandomGenerator;
 
 import java.io.IOException;
 
-public class Skills {
+public class Skill {
 //    GameCharacter skillSubject;
 //    GameCharacter skillObject;
     private int timeToReflect;
@@ -18,7 +19,7 @@ public class Skills {
     boolean penetration;
     boolean currentCoolDown = false;
 
-    public Skills(int timeToReflect,int reflectTime, int reflectDamage, int coolDown, int blockTime, int castTime, int healingPower, int damage, boolean penetration){
+    public Skill(int timeToReflect, int reflectTime, int reflectDamage, int coolDown, int blockTime, int castTime, int healingPower, int damage, boolean penetration){
 
         this.timeToReflect = timeToReflect;
         this.reflectTime = reflectTime;
@@ -39,6 +40,7 @@ public class Skills {
                     skillSubject.castState = true;
                     Thread.sleep(castTime);
                     skillSubject.castState = false;
+                    //healing:
                     if (healingPower > 0) {
                         if (skillSubject.currentHitPoints + healingPower >= skillSubject.maximumHitPoints) {
                             skillSubject.currentHitPoints = skillSubject.maximumHitPoints;
@@ -54,6 +56,31 @@ public class Skills {
                                 e.printStackTrace();
                             }
                         }).start();
+                    }
+                    //dealing damage:
+                    if (damage > 0) {
+                        if (!skillObject.blockState || penetration) {
+                            skillObject.currentHitPoints = skillObject.currentHitPoints - damage + RandomGenerator.getInstance().nextInt((int)Math.round(damage * 0.1 + 1)) - (int)Math.round(damage * 0.1 / 2);
+                            new Thread(() -> {
+                                try {
+                                    skillSubject.damageEffect = true;
+                                    Thread.sleep(200);
+                                    skillSubject.damageEffect = false;
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }).start();
+                            if (skillObject.currentHitPoints <= 0) {
+                                //todo: next or game over
+//                                try {
+//                                    util....saveLast();
+//                                } catch (IOException e) {
+//                                    e.printStackTrace();
+//                                }
+//                                ApplicationStates.... = MAP/GAME_OVER;
+//                                MainFrame. ...();
+                            }
+                        }
                     }
 
                     //todo: other skill effects

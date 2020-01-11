@@ -76,7 +76,7 @@ public class GameMap {
         }
         while (corridorsAcrossLineCounter < corridorsAcrossLine){
             int nextCorridorLocation = temporaryList.get(RandomGenerator.getInstance().nextInt(temporaryList.size()));
-            for (int i = 0; i < temporaryList.size(); i++) { //delete by index of list
+            for (int i = 0; i < temporaryList.size(); i++){ //delete by index of list
                 if (temporaryList.get(i) == nextCorridorLocation){
                     temporaryList.remove(i);
                 }
