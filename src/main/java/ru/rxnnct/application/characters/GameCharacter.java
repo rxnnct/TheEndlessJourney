@@ -12,10 +12,12 @@ public class GameCharacter {
     protected Skill leech;
     protected Skill penetrate;
     protected Skill reflect;
-    boolean healEffect;
-    boolean blockState;
-    boolean castState;
-    boolean damageEffect;
+    protected boolean healEffect;
+    protected boolean blockState;
+    protected boolean castState;
+    protected boolean damageEffect;
+    protected boolean reflectState;
+    protected int reflectPower;
 
     //constructors
     public GameCharacter() {
@@ -29,6 +31,8 @@ public class GameCharacter {
         blockState = false;
         castState = false;
         damageEffect = false;
+        reflectState = false;
+        reflectPower = 0;
     }
 
     //accessors

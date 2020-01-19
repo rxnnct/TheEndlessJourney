@@ -82,10 +82,58 @@ public class Skill {
                             }
                         }
                     }
-
-                    //todo: other skill effects
-                    //-------------------------
-
+                    //reflection by enemy:
+                    if (skillObject.reflectState){
+                        skillSubject.currentHitPoints = skillSubject.currentHitPoints - skillObject.reflectPower
+                                + RandomGenerator.getInstance().nextInt((int)Math.round(skillObject.reflectPower * 0.2 + 1)) - (int)Math.round(skillObject.reflectPower * 0.2 / 2);
+                        if (skillSubject.currentHitPoints <= 0){
+//                            //todo: next or game over
+//                            //points;
+//                            to menu/etc;
+                            //saving
+//                            try {
+//                                ProgressMethods.saveLast();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+            //reflection
+            if (reflectTime > 0){
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(timeToReflect);
+                        skillSubject.reflectState = true;
+                        skillSubject.reflectPower = reflectDamage;
+                        Thread.sleep(reflectTime);
+                        skillSubject.reflectState = false;
+                        skillSubject.reflectPower = 0;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }).start();
+            }
+            //block
+            if (blockTime > 0){
+                new Thread(() -> {
+                    try {
+                        skillSubject.blockState = true;
+                        Thread.sleep(blockTime);
+                        skillSubject.blockState = false;
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }).start();
+            }
+            currentCoolDown = true;
+            new Thread(() -> {
+                try {
+                    Thread.sleep(coolDown);
+                    currentCoolDown = false;
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
