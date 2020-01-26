@@ -31,6 +31,14 @@ public class BattleUserInterface extends JComponent {
             addSkillIcon("leech", Player.getInstance().getLeech(), 350, 150, graphics2d);
             addSkillIcon("heal", Player.getInstance().getHeal(), 450, 150, graphics2d);
             //text
+            graphics2d.setPaint(Color.black);
+            Font currentFont = graphics2d.getFont();
+            graphics2d.setFont(currentFont.deriveFont(currentFont.getSize() * 3.5F));
+            graphics2d.drawString("+ " + Player.getInstance().getCurrentHitPoints(), 70, 430);
+            graphics2d.drawString(Application.getInstance().getCurrentBattle().getEnemy().getCurrentHitPoints() + " +", 630, 430);
+
+            //characters
+            //...
 
             super.repaint();
         }

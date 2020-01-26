@@ -9,6 +9,7 @@ public class Application {
 
     private ApplicationStates applicationState;
     private GameMap currentGameMap;
+    private Battle currentBattle;
 
     //constructor
     private Application() {
@@ -29,14 +30,18 @@ public class Application {
         return currentGameMap;
     }
 
+    public Battle getCurrentBattle() {
+        return currentBattle;
+    }
+
     public void setApplicationState(ApplicationStates applicationState) {
         this.applicationState = applicationState;
     }
 
     //methods
     public void nextLevel(){
-        currentGameMap = new GameMap();
         Player.getInstance().nextStage();
+        currentGameMap = new GameMap();
         Player.getInstance().setCurrentHitPoints(Player.MAXIMUM_HIT_POINTS);
     }
 
@@ -48,7 +53,7 @@ public class Application {
 
     public void startBattle(Enemy enemy){
         this.applicationState = ApplicationStates.BATTLE;
-        Battle battle = new Battle(enemy);
+        currentBattle = new Battle(enemy);
         UserInterface.getInstance().changeCurrentFrame();
     }
 
