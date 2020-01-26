@@ -3,6 +3,7 @@ package ru.rxnnct.userinterface;
 import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
 import ru.rxnnct.application.characters.Player;
+import ru.rxnnct.application.characters.Skill;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,25 +23,22 @@ public class BattleUserInterface extends JComponent {
             Image background = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + "background.png");
             graphics2d.drawImage(background, 0, 0, this);
             //skill icons
-            //todo: make cycle
-            skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + "hit" + Player.getInstance().getHit().getAvailability() + ".png");
-            graphics2d.drawImage(skillIcon, 250, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - 250, this);
-            skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + "penetrate" + Player.getInstance().getHit().getAvailability() + ".png");
-            graphics2d.drawImage(skillIcon, 350, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - 250, this);
-            skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + "reflect" + Player.getInstance().getHit().getAvailability() + ".png");
-            graphics2d.drawImage(skillIcon, 450, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - 250, this);
-            skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + "block" + Player.getInstance().getHit().getAvailability() + ".png");
-            graphics2d.drawImage(skillIcon, 250, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - 150, this);
-            skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + "leech" + Player.getInstance().getHit().getAvailability() + ".png");
-            graphics2d.drawImage(skillIcon, 350, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - 150, this);
-            skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + "heal" + Player.getInstance().getHit().getAvailability() + ".png");
-            graphics2d.drawImage(skillIcon, 450, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - 150, this);
-
+            //todo: make cycle and collection for skills in GameCharacter
+            addSkillIcon("hit", Player.getInstance().getHit(), 250, 250, graphics2d);
+            addSkillIcon("penetrate", Player.getInstance().getPenetrate(), 350, 250, graphics2d);
+            addSkillIcon("reflect", Player.getInstance().getReflect(), 450, 250, graphics2d);
+            addSkillIcon("block", Player.getInstance().getBlock(), 250, 150, graphics2d);
+            addSkillIcon("leech", Player.getInstance().getLeech(), 350, 150, graphics2d);
+            addSkillIcon("heal", Player.getInstance().getHeal(), 450, 150, graphics2d);
             //text
-
 
             super.repaint();
         }
+    }
+
+    public void addSkillIcon(String iconName, Skill skill, int leftPadding, int bottomPadding, Graphics2D graphics2d){
+        skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + iconName + skill.getAvailability() + ".png");
+        graphics2d.drawImage(skillIcon, leftPadding, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - bottomPadding, this);
     }
 
 }
