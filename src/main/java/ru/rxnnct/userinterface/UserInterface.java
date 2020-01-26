@@ -40,6 +40,10 @@ public class UserInterface {
         return battleUserInterface;
     }
 
+    public MainFrame getMainFrame() {
+        return mainFrame;
+    }
+
     //methods
     public void drawMainMenu(){
         //mainMenu = new MainMenu();

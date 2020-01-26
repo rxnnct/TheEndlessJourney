@@ -60,6 +60,38 @@ public class GameCharacter {
         this.characterPositionRow = characterPositionRow;
     }
 
+    public Skill getHit() {
+        return hit;
+    }
+
+    public Skill getBlock() {
+        return block;
+    }
+
+    public Skill getHeal() {
+        return heal;
+    }
+
+    public Skill getLeech() {
+        return leech;
+    }
+
+    public Skill getPenetrate() {
+        return penetrate;
+    }
+
+    public Skill getReflect() {
+        return reflect;
+    }
+
+    public boolean isBlockState() {
+        return blockState;
+    }
+
+    public boolean isCastState() {
+        return castState;
+    }
+
     //methods
 
 }

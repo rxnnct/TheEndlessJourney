@@ -28,6 +28,11 @@ class MainFrame {
         this.frame = frame;
     }
 
+
+    public int getFRAME_HEIGHT() {
+        return FRAME_HEIGHT;
+    }
+
     //methods
     private void setFrame(){
         frame = new JFrame(FRAME_TITLE);

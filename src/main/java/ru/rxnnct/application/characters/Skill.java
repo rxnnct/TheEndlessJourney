@@ -16,11 +16,11 @@ public class Skill {
     private int castTime;
     private int healingPower;
     private int damage;
-    boolean penetration;
-    boolean currentCoolDown = false;
+    private boolean penetration;
+    private boolean currentCoolDown = false;
 
+    //constructors
     public Skill(int timeToReflect, int reflectTime, int reflectDamage, int coolDown, int blockTime, int castTime, int healingPower, int damage, boolean penetration){
-
         this.timeToReflect = timeToReflect;
         this.reflectTime = reflectTime;
         this.reflectDamage = reflectDamage;
@@ -30,6 +30,11 @@ public class Skill {
         this.healingPower = healingPower;
         this.damage = damage;
         this.penetration = penetration;
+    }
+
+    //accessors
+    public boolean isCurrentCoolDown() {
+        return currentCoolDown;
     }
 
     //todo: new states for GameCharacter
@@ -139,5 +144,12 @@ public class Skill {
                 }
             }).start();
         }
+    }
+
+    public String getAvailability(){
+        if (!Player.getInstance().getHit().isCurrentCoolDown() && (!Player.getInstance().isBlockState() && !Player.getInstance().isCastState())){
+            return "1";
+        } else
+            return "2";
     }
 }
