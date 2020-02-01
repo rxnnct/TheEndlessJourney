@@ -8,9 +8,15 @@ import java.util.List;
 import java.util.Random;
 
 public enum EnemyTypes {
-    FANATIC,
-    NORMAL,
-    GUARDIAN;
+    FANATIC(0),
+    NORMAL(1),
+    GUARDIAN(2);
+
+    private final int number;
+
+    EnemyTypes(int s) {
+        number = s;
+    }
 
     private static final List<EnemyTypes> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
@@ -18,5 +24,9 @@ public enum EnemyTypes {
 
     public static EnemyTypes randomEnemyType()  {
         return VALUES.get(RandomGenerator.getInstance().nextInt(SIZE));
+    }
+
+    public int getNumber() {
+        return number;
     }
 }

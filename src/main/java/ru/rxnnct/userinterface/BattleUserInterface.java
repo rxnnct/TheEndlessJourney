@@ -2,6 +2,7 @@ package ru.rxnnct.userinterface;
 
 import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
+import ru.rxnnct.application.characters.EnemyTypes;
 import ru.rxnnct.application.characters.Player;
 import ru.rxnnct.application.characters.Skill;
 
@@ -13,6 +14,7 @@ public class BattleUserInterface extends JComponent {
 
     private final String ASSETS_BATTLE_EFFECTS_PATH = "assets" + File.separator + "effects" + File.separator;
     private final String ASSETS_BATTLE_SKILLICONS_PATH = "assets" + File.separator + "skillicons" + File.separator;
+    private final String ASSETS_BATTLE_CHARACTERS_PATH = "assets" + File.separator + "characters" + File.separator;
     private Image skillIcon;
 
     //methods
@@ -38,7 +40,9 @@ public class BattleUserInterface extends JComponent {
             graphics2d.drawString(Application.getInstance().getCurrentBattle().getEnemy().getCurrentHitPoints() + " +", 630, 430);
 
             //characters
-            //...
+            graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_CHARACTERS_PATH + "player.png"), 100, 100, this);
+            String enemyCharacterImagePath = ASSETS_BATTLE_CHARACTERS_PATH + "enemy" + Application.getInstance().getCurrentBattle().getEnemy().getEnemyTypeNumber() + ".png";
+            graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(enemyCharacterImagePath), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 200, 100, this);
 
             super.repaint();
         }
@@ -48,5 +52,4 @@ public class BattleUserInterface extends JComponent {
         skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + iconName + skill.getAvailability() + ".png");
         graphics2d.drawImage(skillIcon, leftPadding, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - bottomPadding, this);
     }
-
 }

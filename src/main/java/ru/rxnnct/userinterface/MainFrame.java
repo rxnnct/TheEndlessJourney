@@ -28,9 +28,12 @@ class MainFrame {
         this.frame = frame;
     }
 
-
     public int getFRAME_HEIGHT() {
         return FRAME_HEIGHT;
+    }
+
+    public int getFRAME_WIDTH() {
+        return FRAME_WIDTH;
     }
 
     //methods

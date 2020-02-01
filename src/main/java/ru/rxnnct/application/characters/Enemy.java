@@ -13,7 +13,15 @@ public class Enemy extends GameCharacter {
         maximumHitPoints = BASE_HIT_POINTS + Player.getInstance().getCurrentStage() * BONUS_HIT_POINTS_PER_STAGE;
         currentHitPoints = maximumHitPoints;
         enemyType = EnemyTypes.randomEnemyType();
+    }
 
+    //accessors
+    public EnemyTypes getEnemyType() {
+        return enemyType;
+    }
 
+    //methods
+    public int getEnemyTypeNumber(){
+        return enemyType.getNumber();
     }
 }
