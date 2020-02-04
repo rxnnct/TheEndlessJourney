@@ -45,8 +45,12 @@ public class BattleUserInterface extends JComponent {
             enemyCharacterImagePath = ASSETS_BATTLE_CHARACTERS_PATH + "enemy" + Application.getInstance().getCurrentBattle().getEnemy().getEnemyTypeNumber() + ".png";
             graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(enemyCharacterImagePath), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 200, 100, this);
             //Effects
+//            if (Player.getInstance().isCastState()){
+//                graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + "cast.png"), 100, 20, this);
+//            }
+
             if (Player.getInstance().isCastState()){
-                graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + "cast.png"), 100, 20, this);
+                drawEffect("cast.png", 100, 20 , graphics2d);
             }
             //todo: other effects
 
@@ -54,8 +58,18 @@ public class BattleUserInterface extends JComponent {
         }
     }
 
-    public void addSkillIcon(String iconName, Skill skill, int leftPadding, int bottomPadding, Graphics2D graphics2d){
+    private void addSkillIcon(String iconName, Skill skill, int leftPadding, int bottomPadding, Graphics2D graphics2d){
         skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + iconName + skill.getAvailability() + ".png");
         graphics2d.drawImage(skillIcon, leftPadding, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - bottomPadding, this);
     }
+
+    private void drawEffect(String effectFileName, int leftPadding, int topPadding, Graphics2D graphics2d){
+        graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + effectFileName), leftPadding, topPadding, this);
+    }
+
+    //todo remake
+//    private void drawEffect(String effectFileName, int leftPadding, int topPadding, int -XXX, int -YYY, Graphics2D graphics2d){
+//        graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + effectFileName), leftPadding, topPadding, -XXX, -YYY, this);
+//    }
+
 }
