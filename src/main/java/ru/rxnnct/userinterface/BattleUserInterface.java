@@ -2,7 +2,6 @@ package ru.rxnnct.userinterface;
 
 import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
-import ru.rxnnct.application.characters.EnemyTypes;
 import ru.rxnnct.application.characters.Player;
 import ru.rxnnct.application.characters.Skill;
 
@@ -20,9 +19,10 @@ public class BattleUserInterface extends JComponent {
     //methods
     public void paint(Graphics graphics) {
         if (Application.getInstance().getApplicationState() == ApplicationStates.BATTLE) {
+            //todo: mb move to fields:
             Graphics2D graphics2d = (Graphics2D) graphics;
             //background
-            Image background = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + "background.png");
+            Image background = getImage(ASSETS_BATTLE_EFFECTS_PATH, "background.png");
             graphics2d.drawImage(background, 0, 0, this);
             //skill icons
             //todo: make cycle and collection for skills in GameCharacter
@@ -41,17 +41,17 @@ public class BattleUserInterface extends JComponent {
             //characters
             String enemyCharacterImagePath;
             enemyCharacterImagePath = ASSETS_BATTLE_CHARACTERS_PATH + "player.png";
-            graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(enemyCharacterImagePath), 100, 100, this);
+            graphics2d.drawImage(getImage(enemyCharacterImagePath), 100, 100, this);
             enemyCharacterImagePath = ASSETS_BATTLE_CHARACTERS_PATH + "enemy" + Application.getInstance().getCurrentBattle().getEnemy().getEnemyTypeNumber() + ".png";
-            graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(enemyCharacterImagePath), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 200, 100, this);
+            graphics2d.drawImage(getImage(enemyCharacterImagePath), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 200, 100, this);
             //Effects
-//            if (Player.getInstance().isCastState()){
-//                graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + "cast.png"), 100, 20, this);
-//            }
-
             if (Player.getInstance().isCastState()){
-                drawEffect("cast.png", 100, 20 , graphics2d);
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "cast.png"), 100, 20, this);
             }
+            if (Application.getInstance().getCurrentBattle().getEnemy().isCastState()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "cast.png"), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 100, 20, -100, 100, this);
+            }
+
             //todo: other effects
 
             super.repaint();
@@ -63,13 +63,12 @@ public class BattleUserInterface extends JComponent {
         graphics2d.drawImage(skillIcon, leftPadding, UserInterface.getInstance().getMainFrame().getFRAME_HEIGHT() - bottomPadding, this);
     }
 
-    private void drawEffect(String effectFileName, int leftPadding, int topPadding, Graphics2D graphics2d){
-        graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + effectFileName), leftPadding, topPadding, this);
+    private Image getImage(String filePath){
+        return Toolkit.getDefaultToolkit().getImage(filePath);
     }
 
-    //todo remake
-//    private void drawEffect(String effectFileName, int leftPadding, int topPadding, int -XXX, int -YYY, Graphics2D graphics2d){
-//        graphics2d.drawImage(Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_EFFECTS_PATH + effectFileName), leftPadding, topPadding, -XXX, -YYY, this);
-//    }
+    private Image getImage(String fileDirectory, String fileName){
+        return Toolkit.getDefaultToolkit().getImage(fileDirectory + fileName);
+    }
 
 }
