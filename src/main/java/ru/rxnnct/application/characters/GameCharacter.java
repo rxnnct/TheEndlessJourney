@@ -92,6 +92,18 @@ public class GameCharacter {
         return castState;
     }
 
+    public boolean isReflectState() {
+        return reflectState;
+    }
+
+    public boolean isHealEffect() {
+        return healEffect;
+    }
+
+    public boolean isDamageEffect() {
+        return damageEffect;
+    }
+
     //methods
 
 }

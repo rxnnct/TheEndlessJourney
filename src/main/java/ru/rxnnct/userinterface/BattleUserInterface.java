@@ -51,6 +51,24 @@ public class BattleUserInterface extends JComponent {
             if (Application.getInstance().getCurrentBattle().getEnemy().isCastState()){
                 graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "cast.png"), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 100, 20, -100, 100, this);
             }
+            if (Player.getInstance().isBlockState()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "block.png"), 100, 100, this);
+            }
+            if (Application.getInstance().getCurrentBattle().getEnemy().isBlockState()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "block.png"), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 100, 100, -100, 200, this);
+            }
+            if (Player.getInstance().isDamageEffect()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "damage.png"), 200, 120, this);
+            }
+            if (Application.getInstance().getCurrentBattle().getEnemy().isDamageEffect()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "damage.png"), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 200, 120, -400, 100, this);
+            }
+            if (Player.getInstance().isHealEffect()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "heal.png"), 100, 100, this);
+            }
+            if (Application.getInstance().getCurrentBattle().getEnemy().isHealEffect()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "heal.png"), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 100, 100, -100, 200, this);
+            }
 
             //todo: other effects
 
