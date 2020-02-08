@@ -69,12 +69,12 @@ public class BattleUserInterface extends JComponent {
             if (Application.getInstance().getCurrentBattle().getEnemy().isHealEffect()){
                 graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "heal.png"), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 100, 100, -100, 200, this);
             }
-
-            //todo: other effects
-
             super.repaint();
         }
     }
+
+    //todo: input
+    //...
 
     private void addSkillIcon(String iconName, Skill skill, int leftPadding, int bottomPadding, Graphics2D graphics2d){
         skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + iconName + skill.getAvailability() + ".png");
