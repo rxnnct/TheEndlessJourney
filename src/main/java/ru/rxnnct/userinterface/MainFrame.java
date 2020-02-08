@@ -104,7 +104,36 @@ class MainFrame {
 
                 if (Application.getInstance().getApplicationState() == ApplicationStates.BATTLE) {
                     switch (keyCode) {
-                        //
+                        case KeyEvent.VK_Q:
+                            UserInterface.getInstance()
+                                    .getBattleUserInterface()
+                                    .qPressed();
+                            break;
+                        case KeyEvent.VK_W:
+                            UserInterface.getInstance()
+                                    .getBattleUserInterface()
+                                    .wPressed();
+                            break;
+                        case KeyEvent.VK_E:
+                            UserInterface.getInstance()
+                                    .getBattleUserInterface()
+                                    .ePressed();
+                            break;
+                        case KeyEvent.VK_A:
+                            UserInterface.getInstance()
+                                    .getBattleUserInterface()
+                                    .aPressed();
+                            break;
+                        case KeyEvent.VK_S:
+                            UserInterface.getInstance()
+                                    .getBattleUserInterface()
+                                    .sPressed();
+                            break;
+                        case KeyEvent.VK_D:
+                            UserInterface.getInstance()
+                                    .getBattleUserInterface()
+                                    .dPressed();
+                            break;
                     }
                 }
 

@@ -73,8 +73,29 @@ public class BattleUserInterface extends JComponent {
         }
     }
 
-    //todo: input
-    //...
+    public void qPressed(){
+        Player.getInstance().getHit().execute(Player.getInstance(), Application.getInstance().getCurrentBattle().getEnemy());
+    }
+
+    public void wPressed(){
+        Player.getInstance().getPenetrate().execute(Player.getInstance(), Application.getInstance().getCurrentBattle().getEnemy());
+    }
+
+    public void ePressed(){
+        Player.getInstance().getReflect().execute(Player.getInstance(), Application.getInstance().getCurrentBattle().getEnemy());
+    }
+
+    public void aPressed(){
+        Player.getInstance().getBlock().execute(Player.getInstance(), Application.getInstance().getCurrentBattle().getEnemy());
+    }
+
+    public void sPressed(){
+        Player.getInstance().getLeech().execute(Player.getInstance(), Application.getInstance().getCurrentBattle().getEnemy());
+    }
+
+    public void dPressed(){
+        Player.getInstance().getHeal().execute(Player.getInstance(), Application.getInstance().getCurrentBattle().getEnemy());
+    }
 
     private void addSkillIcon(String iconName, Skill skill, int leftPadding, int bottomPadding, Graphics2D graphics2d){
         skillIcon = Toolkit.getDefaultToolkit().getImage(ASSETS_BATTLE_SKILLICONS_PATH + iconName + skill.getAvailability() + ".png");
