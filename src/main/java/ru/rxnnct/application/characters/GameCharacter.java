@@ -21,18 +21,18 @@ public class GameCharacter {
 
     //constructors
     public GameCharacter() {
-        hit = new Skill(0, 0, 0 , 2000, 0, 300, 0, 250, false);
-        block = new Skill(0, 0, 0 , 1500, 700, 0, 0, 0, false);
-        heal = new Skill(0, 0, 0 , 4000, 0, 1000, 500, 0, false);
-        leech = new Skill(0, 0, 0 , 3000, 0, 400, 150, 150, true);
-        penetrate = new Skill(0, 0, 0 , 4000, 0, 200, 0, 200, true);
-        reflect = new Skill(0, 1500, 150 , 5000, 0, 1500, 0, 150, false);
-        healEffect = false;
-        blockState = false;
-        castState = false;
-        damageEffect = false;
-        reflectState = false;
-        reflectPower = 0;
+        this.hit = new Skill(0, 0, 0 , 2000, 0, 300, 0, 250, false);
+        this.block = new Skill(0, 0, 0 , 1500, 700, 0, 0, 0, false);
+        this.heal = new Skill(0, 0, 0 , 4000, 0, 1000, 500, 0, false);
+        this.leech = new Skill(0, 0, 0 , 3000, 0, 400, 150, 150, true);
+        this.penetrate = new Skill(0, 0, 0 , 4000, 0, 200, 0, 200, true);
+        this.reflect = new Skill(0, 1500, 150 , 5000, 0, 1500, 0, 150, false);
+        this.healEffect = false;
+        this.blockState = false;
+        this.castState = false;
+        this.damageEffect = false;
+        this.reflectState = false;
+        this.reflectPower = 0;
     }
 
     //accessors

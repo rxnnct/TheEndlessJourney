@@ -37,7 +37,6 @@ public class Skill {
         return currentCoolDown;
     }
 
-    //todo: new states for GameCharacter
     public void execute(GameCharacter skillSubject, GameCharacter skillObject){
         if ((!currentCoolDown && !skillSubject.blockState) && !skillSubject.castState){
             new Thread(() -> {
@@ -147,7 +146,7 @@ public class Skill {
     }
 
     public String getAvailability(){
-        if (!Player.getInstance().getHit().isCurrentCoolDown() && (!Player.getInstance().isBlockState() && !Player.getInstance().isCastState())){
+        if (!currentCoolDown && (!Player.getInstance().isBlockState() && !Player.getInstance().isCastState())){
             return "1";
         } else
             return "2";
