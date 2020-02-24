@@ -9,7 +9,7 @@ public class Battle {
     //constructors
     public Battle(Enemy enemy) {
         this.enemy = enemy;
-        this.enemy.fight();
+        this.enemy.startFight();
         //todo: delete this test
 //        new Thread(() -> {
 //            try {
