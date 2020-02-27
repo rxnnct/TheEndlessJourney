@@ -59,7 +59,46 @@ public class ArtificialIntelligence {
                     enemy.getHit().execute(enemy, Player.getInstance());
                     priorityArray[0][0] = 0;
                 }
-
+                if (Player.getInstance().isCastState()) priorityAdd = 15;
+                priorityArray[0][1] = priorityArray[0][1] + (int) Math.round(blockPriorityRate * RandomGenerator.getInstance().nextInt(7 + priorityAdd));
+                priorityAdd = 0;
+                if (priorityArray[0][1] >= priorityArray[1][1]){
+                    enemy.getBlock().execute(enemy, Player.getInstance());
+                    priorityArray[0][1] = 0;
+                }
+                if (enemy.currentHitPoints < Math.round(enemy.currentHitPoints * 0.33)) priorityAdd = 10;
+                priorityArray[0][2] = priorityArray[0][2] + (int) Math.round(healPriorityRate * RandomGenerator.getInstance().nextInt(7 + priorityAdd));
+                priorityAdd = 0;
+                if (priorityArray[0][2] >= priorityArray[1][2]){
+                    enemy.getHeal().execute(enemy, Player.getInstance());
+                    priorityArray[0][2] = 0;
+                }
+                if (enemy.currentHitPoints < Math.round(enemy.currentHitPoints * 0.66)) priorityAdd = 5;
+                priorityArray[0][3] = priorityArray[0][3] + (int) Math.round(leechPriorityRate * RandomGenerator.getInstance().nextInt(7 + priorityAdd));
+                priorityAdd = 0;
+                if (priorityArray[0][3] >= priorityArray[1][3]){
+                    enemy.getLeech().execute(enemy, Player.getInstance());
+                    priorityArray[0][3] = 0;
+                }
+                if (Player.getInstance().isBlockState()) priorityAdd = 15;
+                priorityArray[0][4] = priorityArray[0][4] + (int) Math.round(penetratePriorityRate * RandomGenerator.getInstance().nextInt(7 + priorityAdd));
+                priorityAdd = 0;
+                if (priorityArray[0][4] >= priorityArray[1][4]){
+                    enemy.getPenetrate().execute(enemy, Player.getInstance());
+                    priorityArray[0][4] = 0;
+                }
+                if (Player.getInstance().isCastState() && enemy.currentHitPoints > Math.round(enemy.currentHitPoints * 0.66)) priorityAdd = 10;
+                priorityArray[0][5] = priorityArray[0][5] + (int) Math.round(reflectPriorityRate * RandomGenerator.getInstance().nextInt(7 + priorityAdd));
+                priorityAdd = 0;
+                if (priorityArray[0][5] >= priorityArray[1][5]){
+                    enemy.getReflect().execute(enemy, Player.getInstance());
+                    priorityArray[0][5] = 0;
+                }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }).start();
     }
