@@ -83,6 +83,12 @@ public class Skill {
 //                                }
 //                                ApplicationStates.... = MAP/GAME_OVER;
 //                                MainFrame. ...();
+
+                                if (skillSubject instanceof Player){
+                                    //continueGame
+                                } else {
+                                    //gameOver
+                                }
                             }
                         }
                     }
@@ -100,6 +106,11 @@ public class Skill {
 //                            } catch (IOException e) {
 //                                e.printStackTrace();
 //                            }
+                            if (skillSubject instanceof Player){
+                                //gameOver
+                            } else {
+                                //continueGame
+                            }
                         }
                     }
                 } catch (InterruptedException e) {
@@ -143,6 +154,14 @@ public class Skill {
                 }
             }).start();
         }
+    }
+
+    public void continueGame(){
+
+    }
+
+    public void gameOver(){
+
     }
 
     public String getAvailability(){

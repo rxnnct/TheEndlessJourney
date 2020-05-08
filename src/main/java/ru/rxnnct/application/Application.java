@@ -11,7 +11,7 @@ public class Application {
     private GameMap currentGameMap;
     private Battle currentBattle;
 
-    //constructor
+    //constructors
     private Application() {
         applicationState = ApplicationStates.MENU;
         UserInterface.getInstance().drawMainMenu();
