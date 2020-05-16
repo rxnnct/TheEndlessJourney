@@ -1,6 +1,7 @@
 package ru.rxnnct.application;
 
 import ru.rxnnct.application.characters.Enemy;
+import ru.rxnnct.application.characters.Player;
 import ru.rxnnct.userinterface.UserInterface;
 
 public class Battle {
@@ -10,22 +11,22 @@ public class Battle {
     public Battle(Enemy enemy) {
         this.enemy = enemy;
         this.enemy.startFight();
-        //todo: delete this test
-//        new Thread(() -> {
-//            try {
-//                Thread.sleep(300);
-//                Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
-//                Application.getInstance().setApplicationState(ApplicationStates.MAP);
-//                UserInterface.getInstance().changeCurrentFrame();
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }).start();
     }
 
     //accessors
     public Enemy getEnemy() {
         return enemy;
+    }
+
+    public void killTheEnemy(){
+        Player.getInstance().addScore();
+        Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
+        Application.getInstance().setApplicationState(ApplicationStates.MAP);
+        UserInterface.getInstance().changeCurrentFrame();
+    }
+
+    public void gameOver(){
+        //save
     }
 
 }

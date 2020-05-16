@@ -143,4 +143,8 @@ public class Player extends GameCharacter {
         }
     }
 
+    public void addScore(){
+        score += 15 * currentStage;
+    }
+
 }

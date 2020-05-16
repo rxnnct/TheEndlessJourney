@@ -1,9 +1,7 @@
 package ru.rxnnct.application.characters;
 
-import ru.rxnnct.application.ApplicationStates;
+import ru.rxnnct.application.Application;
 import ru.rxnnct.application.util.RandomGenerator;
-
-import java.io.IOException;
 
 public class Skill {
 //    GameCharacter skillSubject;
@@ -75,19 +73,10 @@ public class Skill {
                                 }
                             }).start();
                             if (skillObject.currentHitPoints <= 0) {
-                                //todo: next or game over
-//                                try {
-//                                    util....saveLast();
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
-//                                ApplicationStates.... = MAP/GAME_OVER;
-//                                MainFrame. ...();
-
                                 if (skillSubject instanceof Player){
-                                    //continueGame
+                                    Application.getInstance().getCurrentBattle().killTheEnemy();
                                 } else {
-                                    //gameOver
+                                    Application.getInstance().getCurrentBattle().gameOver();
                                 }
                             }
                         }
@@ -97,19 +86,10 @@ public class Skill {
                         skillSubject.currentHitPoints = skillSubject.currentHitPoints - skillObject.reflectPower
                                 + RandomGenerator.getInstance().nextInt((int)Math.round(skillObject.reflectPower * 0.2 + 1)) - (int)Math.round(skillObject.reflectPower * 0.2 / 2);
                         if (skillSubject.currentHitPoints <= 0){
-//                            //todo: next or game over
-//                            //points;
-//                            to menu/etc;
-                            //saving
-//                            try {
-//                                ProgressMethods.saveLast();
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
                             if (skillSubject instanceof Player){
-                                //gameOver
+                                Application.getInstance().getCurrentBattle().gameOver();
                             } else {
-                                //continueGame
+                                Application.getInstance().getCurrentBattle().killTheEnemy();
                             }
                         }
                     }
@@ -154,14 +134,6 @@ public class Skill {
                 }
             }).start();
         }
-    }
-
-    public void continueGame(){
-
-    }
-
-    public void gameOver(){
-
     }
 
     public String getAvailability(){
