@@ -26,7 +26,8 @@ public class Battle {
     }
 
     public void gameOver(){
-        //save
+        //save score
+        Application.getInstance().setApplicationState(ApplicationStates.MAP);
+        UserInterface.getInstance().changeCurrentFrame();
     }
-
 }
