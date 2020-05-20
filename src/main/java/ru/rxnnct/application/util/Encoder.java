@@ -12,24 +12,20 @@ public class Encoder {
     private Encoder() {
     }
 
-    public byte[] encrypt(String inputString)
-    {
+    public byte[] encrypt(String inputString) {
         byte[] inputArray = inputString.getBytes();
         byte[] keyWordArray = KEY_WORD.getBytes();
         byte[] resultArray = new byte[inputArray.length];
-        for(int i = 0; i < inputArray.length; i++)
-        {
+        for(int i = 0; i < inputArray.length; i++) {
             resultArray[i] = (byte) (inputArray[i] ^ keyWordArray[i % keyWordArray.length]);
         }
         return resultArray;
     }
 
-    public String decrypt(byte[] inputArray)
-    {
+    public String decrypt(byte[] inputArray) {
         byte[] resultString  = new byte[inputArray.length];
         byte[] keyWordArray = KEY_WORD.getBytes();
-        for(int i = 0; i < inputArray.length; i++)
-        {
+        for(int i = 0; i < inputArray.length; i++) {
             resultString[i] = (byte) (inputArray[i] ^ keyWordArray[i % keyWordArray.length]);
         }
         return new String(resultString);
