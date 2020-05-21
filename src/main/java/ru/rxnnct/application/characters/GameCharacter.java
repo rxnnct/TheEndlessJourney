@@ -88,6 +88,7 @@ public class GameCharacter {
         return damageEffect;
     }
 
+    //methods
     public void initializeSkills(){
         this.hit = new Skill(0, 0, 0 , 2000, 0, 300, 0, 250, false);
         this.block = new Skill(0, 0, 0 , 1500, 700, 0, 0, 0, false);

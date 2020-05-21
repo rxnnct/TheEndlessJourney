@@ -13,8 +13,8 @@ public class Battle {
     //constructors
     public Battle(Enemy enemy) {
         Player.getInstance().initializeSkills();
-        enemy.initializeSkills();
         this.enemy = enemy;
+        this.enemy.initializeSkills();
         this.enemy.startFight();
     }
 
@@ -23,8 +23,8 @@ public class Battle {
         return enemy;
     }
 
+    //methods
     public void killTheEnemy(){
-        //todo: remove bug double kill
         Player.getInstance().addScore();
         Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
         Application.getInstance().setApplicationState(ApplicationStates.MAP);
