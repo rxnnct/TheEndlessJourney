@@ -30,7 +30,7 @@ public class ApplicationFileHandler {
 
     public void saveScore() throws IOException {
         loadScore();
-        scoreList.add(Player.getInstance().getScore() + " - очков (" + new SimpleDateFormat("dd.MM.yyyy hh:mm").format(new Date()) + ")");
+        scoreList.add(Player.getInstance().getScore() + " - points (" + new SimpleDateFormat("dd.MM.yyyy hh:mm").format(new Date()) + ")");
         if (scoreList.size() > 10) scoreList.remove(0);
         Path path = Paths.get(SAVES_PATH);
         String json = gson.toJson(scoreList);

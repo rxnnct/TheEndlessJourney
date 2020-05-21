@@ -22,6 +22,7 @@ public class Battle {
     }
 
     public void killTheEnemy(){
+        //todo: remove bug double kill
         Player.getInstance().addScore();
         Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
         Application.getInstance().setApplicationState(ApplicationStates.MAP);
@@ -29,7 +30,6 @@ public class Battle {
     }
 
     public void gameOver() throws IOException {
-        //todo: save score
         ApplicationFileHandler.getInstance().saveScore();
         Application.getInstance().setApplicationState(ApplicationStates.GAME_OVER);
         UserInterface.getInstance().changeCurrentFrame();
