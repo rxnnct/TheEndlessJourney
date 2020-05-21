@@ -19,11 +19,7 @@ public class ApplicationFileHandler {
 
     private final String SAVES_PATH = "saves" + File.separator + "score.sav";
     private List<String> scoreList = new ArrayList<>();
-    private String json;
     private Gson gson = new Gson();
-//    private String fromFile;
-//    private File file;
-//    private SimpleDateFormat dateformat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 
     public static ApplicationFileHandler getInstance() {
         return ourInstance;
@@ -37,7 +33,7 @@ public class ApplicationFileHandler {
         scoreList.add(Player.getInstance().getScore() + " - очков (" + new SimpleDateFormat("dd.MM.yyyy hh:mm").format(new Date()) + ")");
         if (scoreList.size() > 10) scoreList.remove(0);
         Path path = Paths.get(SAVES_PATH);
-        json = gson.toJson(scoreList);
+        String json = gson.toJson(scoreList);
         byte[] toFile = Encoder.getInstance().encrypt(json);
         Files.write(path, toFile);
     }
