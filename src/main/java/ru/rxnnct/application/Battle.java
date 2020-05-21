@@ -12,6 +12,8 @@ public class Battle {
 
     //constructors
     public Battle(Enemy enemy) {
+        Player.getInstance().initializeSkills();
+        enemy.initializeSkills();
         this.enemy = enemy;
         this.enemy.startFight();
     }
