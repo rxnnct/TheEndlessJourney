@@ -2,7 +2,7 @@ package ru.rxnnct.application;
 
 import ru.rxnnct.application.characters.Enemy;
 import ru.rxnnct.application.characters.Player;
-import ru.rxnnct.application.util.FileHandler;
+import ru.rxnnct.application.util.ApplicationFileHandler;
 import ru.rxnnct.userinterface.UserInterface;
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class Battle {
 
     public void gameOver() throws IOException {
         //todo: save score
-        FileHandler.getInstance().saveScore();
+        ApplicationFileHandler.getInstance().saveScore();
         Application.getInstance().setApplicationState(ApplicationStates.GAME_OVER);
         UserInterface.getInstance().changeCurrentFrame();
     }
