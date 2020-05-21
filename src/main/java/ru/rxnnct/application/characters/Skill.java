@@ -3,6 +3,8 @@ package ru.rxnnct.application.characters;
 import ru.rxnnct.application.Application;
 import ru.rxnnct.application.util.RandomGenerator;
 
+import java.io.IOException;
+
 public class Skill {
 //    GameCharacter skillSubject;
 //    GameCharacter skillObject;
@@ -76,7 +78,11 @@ public class Skill {
                                 if (skillSubject instanceof Player){
                                     Application.getInstance().getCurrentBattle().killTheEnemy();
                                 } else {
-                                    Application.getInstance().getCurrentBattle().gameOver();
+                                    try {
+                                        Application.getInstance().getCurrentBattle().gameOver();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                         }
@@ -87,7 +93,11 @@ public class Skill {
                                 + RandomGenerator.getInstance().nextInt((int)Math.round(skillObject.reflectPower * 0.2 + 1)) - (int)Math.round(skillObject.reflectPower * 0.2 / 2);
                         if (skillSubject.currentHitPoints <= 0){
                             if (skillSubject instanceof Player){
-                                Application.getInstance().getCurrentBattle().gameOver();
+                                try {
+                                    Application.getInstance().getCurrentBattle().gameOver();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                             } else {
                                 Application.getInstance().getCurrentBattle().killTheEnemy();
                             }
