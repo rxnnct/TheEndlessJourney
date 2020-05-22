@@ -1,20 +1,20 @@
 package ru.rxnnct.application;
 
-import com.google.gson.Gson;
 import ru.rxnnct.application.characters.Enemy;
+import ru.rxnnct.application.characters.EnemyPositionForSaves;
 import ru.rxnnct.application.characters.Player;
-import ru.rxnnct.application.util.Encoder;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GameStateForSaves {
-    int currentStage;
-    int score;
-    int currentHitPoints;
-    int characterPositionRow;
-    int characterPositionCol;
-    int[][] map;
-//    ArrayList<Enemy> enemies;
+    public int currentStage;
+    public int score;
+    public int currentHitPoints;
+    public int characterPositionRow;
+    public int characterPositionCol;
+    public int[][] map;
+    public ArrayList<EnemyPositionForSaves> enemyPositions = new ArrayList<>();
 
     //constructors
     public GameStateForSaves() {
@@ -24,7 +24,10 @@ public class GameStateForSaves {
         this.characterPositionRow = Player.getInstance().getCharacterPositionRow();
         this.characterPositionCol = Player.getInstance().getCharacterPositionCol();
         this.map = Application.getInstance().getCurrentGameMap().getMap();
-//        this.enemies = Application.getInstance().getCurrentGameMap().getEnemies();
-        //todo: save enemies
+        for (Enemy enemy : Application.getInstance().getCurrentGameMap().getEnemies()) {
+            EnemyPositionForSaves pos = new EnemyPositionForSaves(enemy.getCharacterPositionRow(), enemy.getCharacterPositionCol());
+            this.enemyPositions.add(pos);
+        }
     }
+
 }

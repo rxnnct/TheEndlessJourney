@@ -62,9 +62,8 @@ public class ApplicationFileHandler {
     public void saveGame() throws IOException {
         GameStateForSaves gameState = new GameStateForSaves();
         String json = gson.toJson(gameState);
-//        byte[] toFile = Encoder.getInstance().encrypt(json);
-//        Path path = Paths.get(SAVE_GAME_PATH);
-//        Files.write(path, toFile);
-        System.out.println(json);
+        byte[] toFile = Encoder.getInstance().encrypt(json);
+        Path path = Paths.get(SAVE_GAME_PATH);
+        Files.write(path, toFile);
     }
 }
