@@ -137,15 +137,14 @@ class MainFrame {
                     }
                 }
 
-                if (Application.getInstance().getApplicationState() == ApplicationStates.GAME_OVER) {
-                    switch (keyCode) {
-                        //
-                    }
-                }
 
                 if (Application.getInstance().getApplicationState() == ApplicationStates.RECORDS) {
                     switch (keyCode) {
-                        //
+                        case KeyEvent.VK_ESCAPE:
+                            UserInterface.getInstance()
+                                    .getRecords()
+                                    .escPressed();
+                            break;
                     }
                 }
 

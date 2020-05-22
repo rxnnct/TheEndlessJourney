@@ -13,8 +13,9 @@ public class UserInterface {
     private BattleUserInterface battleUserInterface = new BattleUserInterface();
     private GameMapUserInterface gameMapUserInterface = new GameMapUserInterface();
     private GameOver gameOver = new GameOver();
+    private Records records = new Records();
 
-    //constructor
+    //constructors
     private UserInterface() {
         mainFrame = new MainFrame();
     }
@@ -49,18 +50,21 @@ public class UserInterface {
         return gameOver;
     }
 
+    public Records getRecords() {
+        return records;
+    }
+
     //methods
     public void drawMainMenu(){
-        //mainMenu = new MainMenu();
         mainFrame.getFrame().add(mainMenu);
         mainFrame.getFrame().getContentPane().setBackground(Color.white);
     }
 
-    public void drawHelp(){
-        //help = new Help();
-        mainFrame.getFrame().add(help);
-        mainFrame.getFrame().getContentPane().setBackground(Color.white);
-    }
+//    public void drawHelp(){
+//        //help = new Help();
+//        mainFrame.getFrame().add(help);
+//        mainFrame.getFrame().getContentPane().setBackground(Color.white);
+//    }
 
     public void drawGameMapUserInterface(){
         mainFrame.getFrame().add(gameMapUserInterface);
@@ -76,6 +80,11 @@ public class UserInterface {
         mainFrame.getFrame().add(gameOver);
         mainFrame.getFrame().getContentPane().setBackground(Color.white);
     }
+
+//    public void drawRecords(){
+//        mainFrame.getFrame().add(records);
+//        mainFrame.getFrame().getContentPane().setBackground(Color.white);
+//    }
 
     public void changeApplicationState(ApplicationStates applicationState){
         Application.getInstance().setApplicationState(applicationState);
@@ -96,9 +105,9 @@ public class UserInterface {
             case GAME_OVER:
                 mainFrame.getFrame().add(gameOver);
                 break;
-//            case 4:
-//                w.add(canvStats);
-//                break;
+            case RECORDS:
+                mainFrame.getFrame().add(records);
+                break;
             case HELP:
                 mainFrame.getFrame().add(help);
                 break;

@@ -26,8 +26,8 @@ public class Battle {
     //methods
     public void killTheEnemy(){
         Player.getInstance().addScore();
-        Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
         Application.getInstance().setApplicationState(ApplicationStates.MAP);
+        Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
         UserInterface.getInstance().changeCurrentFrame();
     }
 

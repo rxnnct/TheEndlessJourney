@@ -21,13 +21,20 @@ public class ApplicationFileHandler {
     private List<String> scoreList = new ArrayList<>();
     private Gson gson = new Gson();
 
+    //constructors
+    private ApplicationFileHandler() {
+    }
+    //instance
     public static ApplicationFileHandler getInstance() {
         return ourInstance;
     }
 
-    private ApplicationFileHandler() {
+    //accessors
+    public List<String> getScoreList() {
+        return scoreList;
     }
 
+    //methods
     public void saveScore() throws IOException {
         loadScore();
         scoreList.add(Player.getInstance().getScore() + " - points (" + new SimpleDateFormat("dd.MM.yyyy hh:mm").format(new Date()) + ")");

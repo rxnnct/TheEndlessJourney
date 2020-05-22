@@ -99,7 +99,7 @@ public class MainMenu extends JComponent {
                 break;
             case HELP:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.HELP);
-                UserInterface.getInstance().drawHelp();
+                //UserInterface.getInstance().drawHelp();
                 break;
         }
         UserInterface.getInstance().changeCurrentFrame();
