@@ -3,10 +3,12 @@ package ru.rxnnct.userinterface;
 import ru.rxnnct.application.*;
 import ru.rxnnct.application.characters.Enemy;
 import ru.rxnnct.application.characters.Player;
+import ru.rxnnct.application.util.ApplicationFileHandler;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 public class GameMapUserInterface extends JComponent {
     private final int TILE_SIZE = 50;
@@ -53,6 +55,11 @@ public class GameMapUserInterface extends JComponent {
         UserInterface.getInstance().drawMainMenu();
         UserInterface.getInstance().changeCurrentFrame();
         //todo: save game
+        try {
+            ApplicationFileHandler.getInstance().saveGame();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void upPressed(){
