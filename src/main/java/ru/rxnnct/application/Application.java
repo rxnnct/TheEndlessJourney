@@ -52,7 +52,7 @@ public class Application {
     }
 
     public void startBattle(Enemy enemy){
-        this.applicationState = ApplicationStates.BATTLE;
+        applicationState = ApplicationStates.BATTLE;
         currentBattle = new Battle(enemy);
         UserInterface.getInstance().changeCurrentFrame();
     }

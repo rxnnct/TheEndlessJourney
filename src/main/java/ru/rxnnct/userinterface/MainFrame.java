@@ -158,6 +158,16 @@ class MainFrame {
                             break;
                     }
                 }
+
+                if (Application.getInstance().getApplicationState() == ApplicationStates.GAME_OVER) {
+                    switch (keyCode) {
+                        case KeyEvent.VK_ESCAPE:
+                            UserInterface.getInstance()
+                                    .getGameOver()
+                                    .escPressed();
+                            break;
+                    }
+                }
             }
         });
     }

@@ -51,14 +51,6 @@ public class Player extends GameCharacter {
                 case GameMap.MAP_FIELD_EXIT:
                     Application.getInstance().getCurrentGameMap().newStage();
                     break;
-                //todo: enemies
-//                case 3:
-//                    Player.getInstance().changeCharacterPositionRow(-1);
-//                    ApplicationStates.progressState.mapArray[ApplicationStates.progressState.characterPositionI][ApplicationStates.progressState.characterPositionJ] = 1;
-//                    GameBattle.enemy.initialize();
-//                    ApplicationStates.currentActivity = 2;
-//                    MainWindow.execute();
-//                    break;
             }
         }
     }
@@ -73,14 +65,6 @@ public class Player extends GameCharacter {
                 case GameMap.MAP_FIELD_EXIT:
                     Application.getInstance().getCurrentGameMap().newStage();
                     break;
-                //todo: enemies
-//                case 3:
-//                    Player.getInstance().changeCharacterPositionRow(-1);
-//                    ApplicationStates.progressState.mapArray[ApplicationStates.progressState.characterPositionI][ApplicationStates.progressState.characterPositionJ] = 1;
-//                    GameBattle.enemy.initialize();
-//                    ApplicationStates.currentActivity = 2;
-//                    MainWindow.execute();
-//                    break;
             }
         }
     }
@@ -95,14 +79,6 @@ public class Player extends GameCharacter {
                 case GameMap.MAP_FIELD_EXIT:
                     Application.getInstance().getCurrentGameMap().newStage();
                     break;
-                //todo: enemies
-//                case 3:
-//                    Player.getInstance().changeCharacterPositionRow(-1);
-//                    ApplicationStates.progressState.mapArray[ApplicationStates.progressState.characterPositionI][ApplicationStates.progressState.characterPositionJ] = 1;
-//                    GameBattle.enemy.initialize();
-//                    ApplicationStates.currentActivity = 2;
-//                    MainWindow.execute();
-//                    break;
             }
         }
     }
@@ -117,14 +93,6 @@ public class Player extends GameCharacter {
                 case GameMap.MAP_FIELD_EXIT:
                     Application.getInstance().getCurrentGameMap().newStage();
                     break;
-                //todo: enemies
-//                case 3:
-//                    Player.getInstance().changeCharacterPositionRow(-1);
-//                    ApplicationStates.progressState.mapArray[ApplicationStates.progressState.characterPositionI][ApplicationStates.progressState.characterPositionJ] = 1;
-//                    GameBattle.enemy.initialize();
-//                    ApplicationStates.currentActivity = 2;
-//                    MainWindow.execute();
-//                    break;
             }
         }
     }
@@ -135,9 +103,7 @@ public class Player extends GameCharacter {
                     &&  enemy.getCharacterPositionRow() == characterPositionRow){
 //                System.out.println("IS ENEMY");
 //                System.out.println(enemy.hashCode());
-                //todo: fight
                 Application.getInstance().startBattle(enemy);
-                //todo: after fight: Application.getInstance().getCurrentGameMap().getEnemies().remove(enemy);
                 break;
             }
         }

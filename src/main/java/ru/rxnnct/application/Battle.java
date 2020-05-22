@@ -35,5 +35,6 @@ public class Battle {
         ApplicationFileHandler.getInstance().saveScore();
         Application.getInstance().setApplicationState(ApplicationStates.GAME_OVER);
         UserInterface.getInstance().changeCurrentFrame();
+        UserInterface.getInstance().drawGameOver();
     }
 }

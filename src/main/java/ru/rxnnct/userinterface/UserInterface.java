@@ -12,6 +12,7 @@ public class UserInterface {
     private Help help = new Help();
     private BattleUserInterface battleUserInterface = new BattleUserInterface();
     private GameMapUserInterface gameMapUserInterface = new GameMapUserInterface();
+    private GameOver gameOver = new GameOver();
 
     //constructor
     private UserInterface() {
@@ -44,6 +45,10 @@ public class UserInterface {
         return mainFrame;
     }
 
+    public GameOver getGameOver() {
+        return gameOver;
+    }
+
     //methods
     public void drawMainMenu(){
         //mainMenu = new MainMenu();
@@ -62,15 +67,19 @@ public class UserInterface {
         mainFrame.getFrame().getContentPane().setBackground(Color.black);
     }
 
-    public void drawBattleUserInterface(){
-        mainFrame.getFrame().add(battleUserInterface);
+//    public void drawBattleUserInterface(){
+//        mainFrame.getFrame().add(battleUserInterface);
+//        mainFrame.getFrame().getContentPane().setBackground(Color.white);
+//    }
+
+    public void drawGameOver(){
+        mainFrame.getFrame().add(gameOver);
         mainFrame.getFrame().getContentPane().setBackground(Color.white);
     }
 
     public void changeApplicationState(ApplicationStates applicationState){
         Application.getInstance().setApplicationState(applicationState);
     }
-
 
     public void changeCurrentFrame() { //execute (old name)
         //maybe delete
@@ -84,9 +93,9 @@ public class UserInterface {
             case BATTLE:
                 mainFrame.getFrame().add(battleUserInterface);
                 break;
-//            case 3:
-//                w.add(canvResult);
-//                break;
+            case GAME_OVER:
+                mainFrame.getFrame().add(gameOver);
+                break;
 //            case 4:
 //                w.add(canvStats);
 //                break;
