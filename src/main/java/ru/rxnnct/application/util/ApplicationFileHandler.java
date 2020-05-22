@@ -42,10 +42,7 @@ public class ApplicationFileHandler {
         loadScore();
         scoreList.add(Player.getInstance().getScore() + " - points (" + new SimpleDateFormat("dd.MM.yyyy hh:mm").format(new Date()) + ")");
         if (scoreList.size() > 10) scoreList.remove(0);
-        String json = gson.toJson(scoreList);
-        byte[] toFile = Encoder.getInstance().encrypt(json);
-        Path path = Paths.get(SAVE_SCORE_PATH);
-        Files.write(path, toFile);
+        String json = gson.toJson(scoreList);writeFileWithEncode(SAVE_SCORE_PATH, json);
     }
 
     public void loadScore() throws IOException {
@@ -62,8 +59,18 @@ public class ApplicationFileHandler {
     public void saveGame() throws IOException {
         GameStateForSaves gameState = new GameStateForSaves();
         String json = gson.toJson(gameState);
+        writeFileWithEncode(SAVE_GAME_PATH, json);
+    }
+
+    public void loadGame(){
+        //
+        //
+        //
+    }
+
+    private void writeFileWithEncode(String filePath, String json) throws IOException {
         byte[] toFile = Encoder.getInstance().encrypt(json);
-        Path path = Paths.get(SAVE_GAME_PATH);
+        Path path = Paths.get(filePath);
         Files.write(path, toFile);
     }
 }
