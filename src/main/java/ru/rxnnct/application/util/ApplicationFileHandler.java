@@ -1,7 +1,6 @@
 package ru.rxnnct.application.util;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import ru.rxnnct.application.GameStateForSaves;
 import ru.rxnnct.application.characters.Player;
 
@@ -42,35 +41,44 @@ public class ApplicationFileHandler {
         loadScore();
         scoreList.add(Player.getInstance().getScore() + " - points (" + new SimpleDateFormat("dd.MM.yyyy hh:mm").format(new Date()) + ")");
         if (scoreList.size() > 10) scoreList.remove(0);
-        String json = gson.toJson(scoreList);writeFileWithEncode(SAVE_SCORE_PATH, json);
+        String json = gson.toJson(scoreList);
+        writeFileWithEncryption(SAVE_SCORE_PATH, json);
     }
 
     public void loadScore() throws IOException {
-        Path path = Paths.get(SAVE_SCORE_PATH);
-        File file = new File(String.valueOf(path));
-        byte[] toFile = new byte[(int) file.length()];
-        FileInputStream fileInputStream = new FileInputStream(file);
-        fileInputStream.read(toFile);
-        fileInputStream.close();
-        String fromFile = Encoder.getInstance().decrypt(toFile);
+        String fromFile = readFileWithDecryption(SAVE_SCORE_PATH);
         scoreList = gson.fromJson(fromFile, scoreList.getClass());
     }
     
     public void saveGame() throws IOException {
         GameStateForSaves gameState = new GameStateForSaves();
         String json = gson.toJson(gameState);
-        writeFileWithEncode(SAVE_GAME_PATH, json);
+        writeFileWithEncryption(SAVE_GAME_PATH, json);
     }
 
-    public void loadGame(){
+    public void loadGame() throws IOException {
+        String fromFile = readFileWithDecryption(SAVE_GAME_PATH);
+        GameStateForSaves gameState = new GameStateForSaves();
+        gameState = gson.fromJson(fromFile, gameState.getClass());
         //
-        //
+        //...
         //
     }
 
-    private void writeFileWithEncode(String filePath, String json) throws IOException {
+    private void writeFileWithEncryption(String filePath, String json) throws IOException {
         byte[] toFile = Encoder.getInstance().encrypt(json);
         Path path = Paths.get(filePath);
         Files.write(path, toFile);
+    }
+
+    private String readFileWithDecryption(String filePath) throws IOException {
+        Path path = Paths.get(filePath);
+        File file = new File(String.valueOf(path));
+        byte[] toFile = new byte[(int) file.length()];
+        FileInputStream fileInputStream = new FileInputStream(file);
+        fileInputStream.read(toFile);
+        fileInputStream.close();
+        String fromFile = Encoder.getInstance().decrypt(toFile);
+        return fromFile;
     }
 }
