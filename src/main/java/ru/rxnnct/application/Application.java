@@ -2,7 +2,10 @@ package ru.rxnnct.application;
 
 import ru.rxnnct.application.characters.Enemy;
 import ru.rxnnct.application.characters.Player;
+import ru.rxnnct.application.util.ApplicationFileHandler;
 import ru.rxnnct.userinterface.UserInterface;
+
+import java.io.IOException;
 
 public class Application {
     private static Application ourInstance = new Application();
@@ -41,7 +44,7 @@ public class Application {
     //methods
     public void nextLevel(){
         Player.getInstance().nextStage();
-        currentGameMap = new GameMap();
+        currentGameMap = new GameMap(true);
         Player.getInstance().setCurrentHitPoints(Player.MAXIMUM_HIT_POINTS);
     }
 
@@ -49,6 +52,11 @@ public class Application {
         Player.getInstance().setCurrentStage(0);
         Player.getInstance().setScore(0);
         nextLevel();
+    }
+
+    public void continueGame() throws IOException {
+        currentGameMap = new GameMap(false);
+        ApplicationFileHandler.getInstance().loadGame();
     }
 
     public void startBattle(Enemy enemy){

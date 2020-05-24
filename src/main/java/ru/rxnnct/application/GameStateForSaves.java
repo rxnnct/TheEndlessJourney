@@ -5,7 +5,6 @@ import ru.rxnnct.application.characters.EnemyPositionForSaves;
 import ru.rxnnct.application.characters.Player;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class GameStateForSaves {
     public int currentStage;
@@ -25,8 +24,8 @@ public class GameStateForSaves {
         this.characterPositionCol = Player.getInstance().getCharacterPositionCol();
         this.map = Application.getInstance().getCurrentGameMap().getMap();
         for (Enemy enemy : Application.getInstance().getCurrentGameMap().getEnemies()) {
-            EnemyPositionForSaves pos = new EnemyPositionForSaves(enemy.getCharacterPositionRow(), enemy.getCharacterPositionCol());
-            this.enemyPositions.add(pos);
+            EnemyPositionForSaves position = new EnemyPositionForSaves(enemy.getCharacterPositionRow(), enemy.getCharacterPositionCol());
+            this.enemyPositions.add(position);
         }
     }
 

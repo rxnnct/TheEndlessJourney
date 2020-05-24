@@ -6,6 +6,7 @@ import ru.rxnnct.application.ApplicationStates;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -82,6 +83,11 @@ public class MainMenu extends JComponent {
     public void enterPressed(){
         switch(currentMenuItem) {
             case CONTINUE:
+                try {
+                    Application.getInstance().continueGame();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
                 UserInterface.getInstance().drawGameMapUserInterface();
                 break;
@@ -89,10 +95,6 @@ public class MainMenu extends JComponent {
                 Application.getInstance().newGame();
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.MAP);
                 UserInterface.getInstance().drawGameMapUserInterface();
-                //begin test output
-//                GameMap gameMap = new GameMap();
-//                gameMap.generate();
-                //end
                 break;
             case RECORDS:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.RECORDS);

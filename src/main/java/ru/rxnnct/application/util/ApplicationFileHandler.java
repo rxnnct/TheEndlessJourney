@@ -1,7 +1,10 @@
 package ru.rxnnct.application.util;
 
 import com.google.gson.Gson;
+import ru.rxnnct.application.Application;
 import ru.rxnnct.application.GameStateForSaves;
+import ru.rxnnct.application.characters.Enemy;
+import ru.rxnnct.application.characters.EnemyPositionForSaves;
 import ru.rxnnct.application.characters.Player;
 
 import java.io.File;
@@ -60,9 +63,17 @@ public class ApplicationFileHandler {
         String fromFile = readFileWithDecryption(SAVE_GAME_PATH);
         GameStateForSaves gameState = new GameStateForSaves();
         gameState = gson.fromJson(fromFile, gameState.getClass());
-        //
-        //...
-        //
+
+        Player.getInstance().setScore(gameState.score);
+        Player.getInstance().setCurrentStage(gameState.currentStage);
+        Player.getInstance().setCurrentHitPoints(gameState.currentHitPoints);
+        Player.getInstance().setCharacterPositionRow(gameState.characterPositionRow);
+        Player.getInstance().setCharacterPositionCol(gameState.characterPositionCol);
+        Application.getInstance().getCurrentGameMap().setMap(gameState.map);
+//        Application.getInstance().getCurrentGameMap().getEnemies().clear();
+        for (EnemyPositionForSaves enemyPosition : gameState.enemyPositions) {
+            Application.getInstance().getCurrentGameMap().getEnemies().add(new Enemy(enemyPosition.getEnemyPositionRow(), enemyPosition.getEnemyPositionCol()));
+        }
     }
 
     private void writeFileWithEncryption(String filePath, String json) throws IOException {

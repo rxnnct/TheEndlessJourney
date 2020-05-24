@@ -2,6 +2,7 @@ package ru.rxnnct.application;
 
 import ru.rxnnct.application.characters.Enemy;
 import ru.rxnnct.application.characters.Player;
+import ru.rxnnct.application.util.ApplicationFileHandler;
 import ru.rxnnct.application.util.RandomGenerator;
 
 import java.util.ArrayList;
@@ -23,13 +24,23 @@ public class GameMap {
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private int endsArrayElementsCounter = 0;
 
-    GameMap(){
-        generate();
+    GameMap(Boolean isNewGame){
+        if (isNewGame){
+            generate();
+        } else {
+            clear();
+//            ApplicationFileHandler.getInstance().loadGame();
+        }
+
     }
 
     //accessors
     public int[][] getMap() {
         return map;
+    }
+
+    public void setMap(int[][] map) {
+        this.map = map;
     }
 
     public ArrayList<Enemy> getEnemies() {
