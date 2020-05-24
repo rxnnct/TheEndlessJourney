@@ -4,6 +4,8 @@ import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
 import ru.rxnnct.application.util.RandomGenerator;
 
+//todo: remake class
+
 public class ArtificialIntelligence {
     private double hitPriorityRate;
     private double blockPriorityRate;
@@ -11,10 +13,11 @@ public class ArtificialIntelligence {
     private double leechPriorityRate;
     private double penetratePriorityRate;
     private double reflectPriorityRate;
-    private int[][] priorityArray = new int[2][6];
+    private int[][] priorityArray = new int[2][6]; //current priorities and maximum priorities
     private Enemy enemy;
     private int priorityAdd;
 
+    //constructors
     public ArtificialIntelligence(Enemy enemy){
         this.enemy = enemy;
         switch (enemy.getEnemyType()){
@@ -49,6 +52,7 @@ public class ArtificialIntelligence {
         }
     }
 
+    //methods
     public void start(){
         new Thread(() -> {
             while (Application.getInstance().getApplicationState() == ApplicationStates.BATTLE){

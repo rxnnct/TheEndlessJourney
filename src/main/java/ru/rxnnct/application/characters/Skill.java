@@ -6,8 +6,6 @@ import ru.rxnnct.application.util.RandomGenerator;
 import java.io.IOException;
 
 public class Skill {
-//    GameCharacter skillSubject;
-//    GameCharacter skillObject;
     private int timeToReflect;
     private int reflectTime;
     private int reflectDamage;
@@ -37,6 +35,7 @@ public class Skill {
         return currentCoolDown;
     }
 
+    //methods
     public void execute(GameCharacter skillSubject, GameCharacter skillObject){
         if ((!currentCoolDown && !skillSubject.blockState) && !skillSubject.castState){
             new Thread(() -> {
@@ -146,7 +145,7 @@ public class Skill {
         }
     }
 
-    public String getAvailability(){
+    public String getAvailability(){ //for UI (icons)
         if (!currentCoolDown && (!Player.getInstance().isBlockState() && !Player.getInstance().isCastState())){
             return "1";
         } else

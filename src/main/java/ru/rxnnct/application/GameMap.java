@@ -2,7 +2,6 @@ package ru.rxnnct.application;
 
 import ru.rxnnct.application.characters.Enemy;
 import ru.rxnnct.application.characters.Player;
-import ru.rxnnct.application.util.ApplicationFileHandler;
 import ru.rxnnct.application.util.RandomGenerator;
 
 import java.util.ArrayList;
@@ -13,14 +12,11 @@ public class GameMap {
     public static final int CORRIDORS_IN_ROWS = 2;
     public static final int CORRIDORS_IN_COLS = 2;
     public static final int ENEMIES_IN_CORRIDOR = 2;
-
     public static final int MAP_FIELD_EMPTY = 0;
     public static final int MAP_FIELD_CORRIDOR = 1;
     public static final int MAP_FIELD_EXIT = 2;
-
     private int[][] map = new int[MAP_SIZE_ROWS][MAP_SIZE_COLS];
     private int[][] endsArray = new int[2][(CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * 2]; //two ends (for generating exit)
-
     private ArrayList<Enemy> enemies = new ArrayList<>();
     private int endsArrayElementsCounter = 0;
 
@@ -29,7 +25,6 @@ public class GameMap {
             generate();
         } else {
             clear();
-//            ApplicationFileHandler.getInstance().loadGame();
         }
 
     }
@@ -54,19 +49,6 @@ public class GameMap {
         createCorridor(false, MAP_SIZE_ROWS, MAP_SIZE_COLS, CORRIDORS_IN_COLS);
         createStartAndEndPositions();
         createEnemies();
-//        //begin test output-------
-//        //map[Player.getInstance().getCharacterPositionRow()][Player.getInstance().getCharacterPositionCol()] = 4;
-//        for (int row = 0; row < MAP_SIZE_ROWS; row++){
-//            for (int col = 0; col < MAP_SIZE_COLS; col++){
-//                System.out.print(map[row][col] + " ");
-//            }
-//            System.out.println();
-//        }
-//        for (Enemy enemy : enemies) {
-//            System.out.print(enemy.getCharacterPositionRow() + " ");
-//            System.out.println(enemy.getCharacterPositionCol());
-//        }
-//        //end
     }
 
     private void clear(){
@@ -139,7 +121,6 @@ public class GameMap {
     }
 
     private void createEnemies(){
-        //todo: remake method
         enemies.clear();
         while (enemies.size() < (CORRIDORS_IN_ROWS + CORRIDORS_IN_COLS) * ENEMIES_IN_CORRIDOR){
             for (int i = 0; i < MAP_SIZE_ROWS; i++) {
@@ -179,8 +160,4 @@ public class GameMap {
         Player.getInstance().setCurrentHitPoints(Player.MAXIMUM_HIT_POINTS);
         generate();
     }
-
-
-
-
 }

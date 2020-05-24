@@ -2,16 +2,18 @@ package ru.rxnnct.application.util;
 
 public class Encoder {
     private static Encoder ourInstance = new Encoder();
-
     private String KEY_WORD = "ldf253dj4d87uoof";
 
+    //constructors
+    private Encoder() {
+    }
+
+    //accessors
     public static Encoder getInstance() {
         return ourInstance;
     }
 
-    private Encoder() {
-    }
-
+    //methods
     public byte[] encrypt(String inputString) {
         byte[] inputArray = inputString.getBytes();
         byte[] keyWordArray = KEY_WORD.getBytes();

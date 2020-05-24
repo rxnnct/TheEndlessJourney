@@ -15,15 +15,7 @@ public class EnemyPositionForSaves {
         return enemyPositionRow;
     }
 
-    public void setEnemyPositionRow(int enemyPositionRow) {
-        this.enemyPositionRow = enemyPositionRow;
-    }
-
     public int getEnemyPositionCol() {
         return enemyPositionCol;
-    }
-
-    public void setEnemyPositionCol(int enemyPositionCol) {
-        this.enemyPositionCol = enemyPositionCol;
     }
 }

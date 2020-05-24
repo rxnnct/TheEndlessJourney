@@ -4,8 +4,10 @@ import ru.rxnnct.application.Application;
 import ru.rxnnct.application.GameMap;
 
 public class Player extends GameCharacter {
-    public static final int MAXIMUM_HIT_POINTS = 3000;
     private static Player ourInstance = new Player();
+
+    public static final int MAXIMUM_HIT_POINTS = 3000;
+    private static final int SCORE_MODIFIER = 15;
     private int currentStage;
     private int score;
 
@@ -40,7 +42,6 @@ public class Player extends GameCharacter {
         this.currentStage++;
     }
 
-    //WARNING!!! Maybe need this.* in methods:
     public void stepUp(){
         if (characterPositionRow != 0){
             switch (Application.getInstance().getCurrentGameMap().getMap()[characterPositionRow - 1][characterPositionCol]){
@@ -101,8 +102,6 @@ public class Player extends GameCharacter {
         for (Enemy enemy: Application.getInstance().getCurrentGameMap().getEnemies()){
             if (enemy.getCharacterPositionCol() == characterPositionCol
                     &&  enemy.getCharacterPositionRow() == characterPositionRow){
-//                System.out.println("IS ENEMY");
-//                System.out.println(enemy.hashCode());
                 Application.getInstance().startBattle(enemy);
                 break;
             }
@@ -110,7 +109,7 @@ public class Player extends GameCharacter {
     }
 
     public void addScore(){
-        score += 15 * currentStage;
+        score += currentStage * SCORE_MODIFIER;
     }
 
 }

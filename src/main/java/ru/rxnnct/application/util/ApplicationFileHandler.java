@@ -29,12 +29,12 @@ public class ApplicationFileHandler {
     //constructors
     private ApplicationFileHandler() {
     }
-    //instance
+
+    //accessors
     public static ApplicationFileHandler getInstance() {
         return ourInstance;
     }
 
-    //accessors
     public List<String> getScoreList() {
         return scoreList;
     }

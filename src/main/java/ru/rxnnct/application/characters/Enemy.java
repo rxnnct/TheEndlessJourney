@@ -1,8 +1,5 @@
 package ru.rxnnct.application.characters;
 
-import ru.rxnnct.application.Application;
-import ru.rxnnct.application.ApplicationStates;
-
 public class Enemy extends GameCharacter {
     private EnemyTypes enemyType;
     private int BASE_HIT_POINTS = 500;
@@ -17,8 +14,6 @@ public class Enemy extends GameCharacter {
         this.currentHitPoints = maximumHitPoints;
         this.enemyType = EnemyTypes.randomEnemyType();
         this.artificialIntelligence = new ArtificialIntelligence(this);
-        //todo: move to another Entry Point
-//        artificialIntelligence.startFight();
     }
 
     //accessors
