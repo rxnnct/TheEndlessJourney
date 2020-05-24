@@ -19,13 +19,11 @@ public class BattleUserInterface extends JComponent {
     //methods
     public void paint(Graphics graphics) {
         if (Application.getInstance().getApplicationState() == ApplicationStates.BATTLE) {
-            //todo: mb move to fields:
             Graphics2D graphics2d = (Graphics2D) graphics;
             //background
             Image background = getImage(ASSETS_BATTLE_EFFECTS_PATH, "background.png");
             graphics2d.drawImage(background, 0, 0, this);
             //skill icons
-            //todo: make cycle and collection for skills in GameCharacter
             addSkillIcon("hit", Player.getInstance().getHit(), 250, 250, graphics2d);
             addSkillIcon("penetrate", Player.getInstance().getPenetrate(), 350, 250, graphics2d);
             addSkillIcon("reflect", Player.getInstance().getReflect(), 450, 250, graphics2d);

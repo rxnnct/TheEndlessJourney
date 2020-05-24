@@ -11,24 +11,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainMenu extends JComponent {
-
     private final int MENU_ITEMS_LEFT_MARGIN = 200;
     private final int MENU_ITEMS_TOP_MARGIN = 120;
     private final int MENU_ITEMS_TOP_SPACING = 60;
     private final String ASSETS_MENU_PATH = "assets" + File.separator + "menu" + File.separator;
-
     private MainMenuItems currentMenuItem = MainMenuItems.CONTINUE;
     private ArrayList<Image> menuItems = new ArrayList<>();
-
-    
-    //accessors
-    public void setMenuItemToNext() {
-        this.currentMenuItem = currentMenuItem.getNext();
-    }
-
-    public void setMenuItemToPrevious() {
-        this.currentMenuItem = currentMenuItem.getPrevious();
-    }
 
     //constructors
     MainMenu() {
@@ -38,6 +26,15 @@ public class MainMenu extends JComponent {
                 Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "rec1.png"),
                 Toolkit.getDefaultToolkit().getImage(ASSETS_MENU_PATH + "about1.png")
         );
+    }
+
+    //accessors
+    public void setMenuItemToNext() {
+        this.currentMenuItem = currentMenuItem.getNext();
+    }
+
+    public void setMenuItemToPrevious() {
+        this.currentMenuItem = currentMenuItem.getPrevious();
     }
 
     //methods
@@ -101,11 +98,8 @@ public class MainMenu extends JComponent {
                 break;
             case HELP:
                 UserInterface.getInstance().changeApplicationState(ApplicationStates.HELP);
-                //UserInterface.getInstance().drawHelp();
                 break;
         }
         UserInterface.getInstance().changeCurrentFrame();
     }
-
-
 }

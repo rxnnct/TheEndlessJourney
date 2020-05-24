@@ -6,6 +6,7 @@ public enum MainMenuItems {
     RECORDS,
     HELP;
 
+    //methods
     public MainMenuItems getNext() {
         return values()[(ordinal() + 1) % values().length];
     }

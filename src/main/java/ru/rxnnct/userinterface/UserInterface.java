@@ -7,6 +7,7 @@ import java.awt.*;
 
 public class UserInterface {
     private static UserInterface ourInstance = new UserInterface();
+
     private MainFrame mainFrame;
     private MainMenu mainMenu = new MainMenu();
     private Help help = new Help();
@@ -20,12 +21,11 @@ public class UserInterface {
         mainFrame = new MainFrame();
     }
 
-    //instance
+    //accessors
     public static UserInterface getInstance() {
         return ourInstance;
     }
 
-    //accessors
     public MainMenu getMainMenu() {
         return mainMenu;
     }
@@ -60,38 +60,21 @@ public class UserInterface {
         mainFrame.getFrame().getContentPane().setBackground(Color.white);
     }
 
-//    public void drawHelp(){
-//        //help = new Help();
-//        mainFrame.getFrame().add(help);
-//        mainFrame.getFrame().getContentPane().setBackground(Color.white);
-//    }
-
     public void drawGameMapUserInterface(){
         mainFrame.getFrame().add(gameMapUserInterface);
         mainFrame.getFrame().getContentPane().setBackground(Color.black);
     }
-
-//    public void drawBattleUserInterface(){
-//        mainFrame.getFrame().add(battleUserInterface);
-//        mainFrame.getFrame().getContentPane().setBackground(Color.white);
-//    }
 
     public void drawGameOver(){
         mainFrame.getFrame().add(gameOver);
         mainFrame.getFrame().getContentPane().setBackground(Color.white);
     }
 
-//    public void drawRecords(){
-//        mainFrame.getFrame().add(records);
-//        mainFrame.getFrame().getContentPane().setBackground(Color.white);
-//    }
-
     public void changeApplicationState(ApplicationStates applicationState){
         Application.getInstance().setApplicationState(applicationState);
     }
 
-    public void changeCurrentFrame() { //execute (old name)
-        //maybe delete
+    public void changeCurrentFrame() {
         switch(Application.getInstance().getApplicationState()) {
             case MENU:
                 mainFrame.getFrame().add(mainMenu);

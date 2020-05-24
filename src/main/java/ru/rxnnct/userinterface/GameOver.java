@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameOver extends JComponent {
+
+    //methods
     public void paint(Graphics graphics) {
         if (Application.getInstance().getApplicationState() == ApplicationStates.GAME_OVER) {
             Graphics2D graphics2d = (Graphics2D) graphics;

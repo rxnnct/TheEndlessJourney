@@ -2,7 +2,6 @@ package ru.rxnnct.userinterface;
 
 import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
-import ru.rxnnct.application.characters.Player;
 import ru.rxnnct.application.util.ApplicationFileHandler;
 
 import javax.swing.*;
@@ -10,6 +9,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Records extends JComponent {
+
+    //methods
     public void paint(Graphics graphics) {
         if (Application.getInstance().getApplicationState() == ApplicationStates.RECORDS) {
             Graphics2D graphics2d = (Graphics2D) graphics;
@@ -27,7 +28,6 @@ public class Records extends JComponent {
                 graphics2d.drawString(ApplicationFileHandler.getInstance().getScoreList().get(i), 190, 70 + 50 * j);
                 j++;
             }
-
             super.repaint();
         }
     }

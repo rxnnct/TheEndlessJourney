@@ -9,10 +9,10 @@ import java.awt.*;
 public class Help extends JComponent {
     private final int TEXT_LEFT_MARGIN = 30;
 
+    //methods
     public void paint(Graphics graphics) {
         if (Application.getInstance().getApplicationState() == ApplicationStates.HELP) {
             Graphics2D graphics2d = (Graphics2D) graphics;
-
             //Text
             graphics2d.setPaint(Color.black);
             Font currentFont = graphics2d.getFont();
@@ -30,7 +30,6 @@ public class Help extends JComponent {
             graphics2d.drawString("increases the health of opponents. The number of points ", TEXT_LEFT_MARGIN, 350);
             graphics2d.drawString("for the victory over the enemy is growing at each level.", TEXT_LEFT_MARGIN, 375);
             graphics2d.drawString("ESC: exit to main menu.", TEXT_LEFT_MARGIN, 525);
-
             super.repaint();
         }
     }
