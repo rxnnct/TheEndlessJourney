@@ -1,6 +1,6 @@
 # TheEndlessJourney
 
-##About game
+## About game
 This is the 2D game with real-time (like a fighting game) and turn-based (travel on random maps) modes.
 Opponents have different behavior, which depends on the type of opponent. Each new level restores your health and increases the health of opponents. The number of points for the victory over the enemy is growing at each level.
 Map controls:
@@ -14,7 +14,7 @@ Battle controls:
 * D: Heal
 ![screenshots](screenshots.png)
 
-##Implementation details
+## Implementation details
 * Java 8
 * swing
 * awt
