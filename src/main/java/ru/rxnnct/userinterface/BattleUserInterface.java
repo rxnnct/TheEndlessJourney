@@ -67,6 +67,12 @@ public class BattleUserInterface extends JComponent {
             if (Application.getInstance().getCurrentBattle().getEnemy().isHealEffect()){
                 graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "heal.png"), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 100, 100, -100, 200, this);
             }
+            if (Player.getInstance().isReflectState()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "reflect.png"), 100, 200, this);
+            }
+            if (Application.getInstance().getCurrentBattle().getEnemy().isReflectState()){
+                graphics2d.drawImage(getImage(ASSETS_BATTLE_EFFECTS_PATH, "reflect.png"), UserInterface.getInstance().getMainFrame().getFRAME_WIDTH() - 100, 200, -100, 100, this);
+            }
             super.repaint();
         }
     }

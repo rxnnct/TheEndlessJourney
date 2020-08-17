@@ -84,6 +84,10 @@ public class GameCharacter {
         return damageEffect;
     }
 
+    public boolean isReflectState() {
+        return reflectState;
+    }
+
     //methods
     public void initializeSkills(){
         this.hit = new Skill(0, 0, 0 , 2000, 0, 300, 0, 250, false);
