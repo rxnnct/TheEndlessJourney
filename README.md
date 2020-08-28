@@ -1,5 +1,11 @@
 # TheEndlessJourney
 
+## Implementation details
+* Java 8
+* swing
+* awt
+* gson
+
 ## About game
 This is the desktop 2D game with real-time (like a fighting game) and turn-based (travel on random maps) modes.
 Opponents have different behavior, which depends on the type of opponent. Each new level restores your health and increases the health of opponents. The number of points for the victory over the enemy is growing at each level.
@@ -14,9 +20,3 @@ Opponents have different behavior, which depends on the type of opponent. Each n
 * D: Heal
 ### Screenshots
 ![screenshots](screenshots.png)
-
-## Implementation details
-* Java 8
-* swing
-* awt
-* gson
