@@ -2,9 +2,9 @@
 
 ## Implementation details
 * Java 8
-* swing
-* awt
-* gson
+* Swing
+* AWT
+* Gson
 
 ## About game
 This is the desktop 2D game with real-time (like a fighting game) and turn-based (travel on random maps) modes.
