@@ -1,7 +1,7 @@
 package ru.rxnnct.application.characters;
 
 
-public class GameCharacter {
+public abstract class GameCharacter {
     protected int currentHitPoints;
     protected int maximumHitPoints;
     protected int characterPositionRow;
