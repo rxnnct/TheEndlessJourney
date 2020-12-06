@@ -5,6 +5,9 @@ import ru.rxnnct.application.ApplicationStates;
 
 import java.awt.*;
 
+/**
+ * The main class of UI (I/O).
+ */
 public class UserInterface {
     private static UserInterface ourInstance = new UserInterface();
 

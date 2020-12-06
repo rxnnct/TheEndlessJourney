@@ -4,8 +4,11 @@ import ru.rxnnct.application.Application;
 import ru.rxnnct.application.ApplicationStates;
 import ru.rxnnct.application.util.RandomGenerator;
 
-//todo: remake class
+/**
+ * This class contains the enemy's priorities and periodically changes them depending on the situation.
+ */
 
+//todo: remake class
 public class ArtificialIntelligence {
     private double hitPriorityRate;
     private double blockPriorityRate;

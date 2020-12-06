@@ -1,5 +1,8 @@
 package ru.rxnnct.application.util;
 
+/**
+ * XOR encoder.
+ */
 public class Encoder {
     private static Encoder ourInstance = new Encoder();
     private String KEY_WORD = "ldf253dj4d87uoof";

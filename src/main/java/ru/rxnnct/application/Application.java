@@ -7,6 +7,9 @@ import ru.rxnnct.userinterface.UserInterface;
 
 import java.io.IOException;
 
+/**
+ * The main class of game logic.
+ */
 public class Application {
     private static Application ourInstance = new Application();
 

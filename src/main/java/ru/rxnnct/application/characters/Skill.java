@@ -5,6 +5,9 @@ import ru.rxnnct.application.util.RandomGenerator;
 
 import java.io.IOException;
 
+/**
+ * General implementation of skills. All skills differ in input parameters.
+ */
 public class Skill {
     private int timeToReflect;
     private int reflectTime;

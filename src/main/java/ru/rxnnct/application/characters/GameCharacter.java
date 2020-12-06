@@ -1,6 +1,5 @@
 package ru.rxnnct.application.characters;
 
-
 public abstract class GameCharacter {
     protected int currentHitPoints;
     protected int maximumHitPoints;
@@ -89,6 +88,10 @@ public abstract class GameCharacter {
     }
 
     //methods
+
+    /**
+     * Sets skill parameters
+     */
     public void initializeSkills(){
         this.hit = new Skill(0, 0, 0 , 2000, 0, 300, 0, 250, false);
         this.block = new Skill(0, 0, 0 , 1500, 700, 0, 0, 0, false);
